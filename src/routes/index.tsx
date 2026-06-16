@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
   ArrowRight,
+  ArrowUp,
   ArrowUpRight,
   Code2,
   Figma,
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 
 import avatar from "../assets/francisco.jpg";
+import monogram from "../assets/fc-monogram.jpg";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
@@ -55,6 +57,15 @@ const PROJECTS = [
     desc: "Site pessoal para atleta amador, com foco em storytelling, UX, responsividade e identidade visual.",
     img: projRunner,
     featured: true,
+    caseStudy: {
+      overview: "A Landing Page Francisco Runner é um projeto pessoal criado para apresentar minha trajetória como atleta amador autodidata no mundo da corrida de rua. O objetivo foi construir uma página visual, moderna e responsiva, usando storytelling, identidade visual forte e uma experiência de navegação simples e direta.",
+      problem: "Eu precisava de uma página que apresentasse minha história na corrida de forma mais profissional, organizada e visual. A ideia era sair de uma apresentação simples e criar uma experiência mais completa, com imagens, textos curtos, cards e uma narrativa clara da minha evolução como corredor.",
+      objective: "Criar uma landing page moderna, responsiva e impactante para apresentar minha trajetória, conquistas, evolução pessoal e conexão com a corrida de rua, usando princípios de UX/UI, hierarquia visual e design responsivo.",
+      solution: "Desenvolvi uma estrutura com hero impactante, seções bem divididas, cards visuais, contraste entre fundo escuro e detalhes em neon, além de uma navegação fluida. O projeto foi pensado para transmitir energia, foco, superação e identidade pessoal.",
+      process: "O processo começou com a definição da proposta visual e da mensagem principal da página. Depois, organizei as seções em uma ordem lógica: apresentação, história, evolução, imagens, destaques e contato. Em seguida, trabalhei o layout com foco em responsividade, leitura agradável e impacto visual.",
+      tools: "HTML, CSS, JavaScript, Base44, Canva e conceitos de UX/UI.",
+      result: "O resultado foi uma landing page com identidade própria, visual moderno, boa organização das informações e adaptação para diferentes tamanhos de tela. O projeto reforça minha capacidade de criar interfaces digitais com foco em experiência do usuário, estética visual e comunicação clara.",
+    },
   },
   {
     n: "02",
@@ -63,6 +74,15 @@ const PROJECTS = [
     stack: ["HTML", "CSS", "JavaScript", "UX/UI"],
     desc: "Projeto estilo Linktree personalizado, com foco em identidade, usabilidade e conversão.",
     img: projLinks,
+    caseStudy: {
+      overview: "Página de links personalizada para centralizar contatos, redes sociais e projetos em um único lugar com identidade visual coerente.",
+      problem: "Centralizar minhas redes e projetos em um link único, evitando soluções genéricas e sem identidade visual.",
+      objective: "Construir um hub de links com visual próprio, leve, responsivo e de fácil manutenção.",
+      solution: "Layout minimalista com botões grandes, hierarquia clara, foto de perfil e contraste alto para boa legibilidade no mobile.",
+      process: "Definição dos links prioritários, esboço visual, prototipação rápida e implementação em HTML, CSS e JS puro.",
+      tools: "HTML, CSS, JavaScript e conceitos de UX/UI.",
+      result: "Uma página leve, com carregamento rápido, identidade própria e foco em conversão para os principais canais.",
+    },
   },
   {
     n: "03",
@@ -71,6 +91,15 @@ const PROJECTS = [
     stack: ["Excel", "Base44", "UX"],
     desc: "Organização de dados para controle de entregas, fornecedores e notas fiscais.",
     img: projDashboard,
+    caseStudy: {
+      overview: "Dashboard interno para acompanhar fornecedores, entregas e notas fiscais com visão centralizada e filtros úteis.",
+      problem: "As informações de fornecedores estavam dispersas em planilhas e documentos, dificultando o acompanhamento operacional.",
+      objective: "Centralizar e organizar os dados em uma única visão que facilitasse decisões rápidas no dia a dia.",
+      solution: "Estrutura tabular com indicadores, filtros por status e cards de resumo destacando o que precisa de atenção.",
+      process: "Levantamento dos dados, organização das colunas, definição de indicadores e construção do layout no Base44.",
+      tools: "Excel, Base44 e princípios de UX para dashboards.",
+      result: "Maior controle das entregas, redução de retrabalho e visão clara do status dos fornecedores.",
+    },
   },
   {
     n: "04",
@@ -79,6 +108,15 @@ const PROJECTS = [
     stack: ["HTML", "CSS", "JavaScript", "Design System"],
     desc: "Este próprio portfólio como projeto: estrutura, design system, responsividade e processo.",
     img: projPortfolio,
+    caseStudy: {
+      overview: "Meu portfólio pessoal pensado como produto: design system, identidade visual, responsividade e narrativa de processo.",
+      problem: "Eu precisava de um espaço próprio para apresentar projetos, habilidades e processo de forma consistente.",
+      objective: "Criar um portfólio com identidade forte, navegação clara e foco em UX, que servisse como vitrine profissional.",
+      solution: "Design system com tokens semânticos, tema escuro com acentos neon, cards animados, microinterações e seções bem definidas.",
+      process: "Definição de tom visual, wireframes, prototipação, escolha tipográfica e implementação responsiva.",
+      tools: "HTML, CSS, JavaScript, Design System, Figma e Lovable.",
+      result: "Portfólio coeso, moderno e responsivo, que comunica claramente meu posicionamento como Web & UX.",
+    },
   },
 ];
 
@@ -115,6 +153,7 @@ const PROCESS = [
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [openCase, setOpenCase] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen text-foreground">
@@ -124,11 +163,17 @@ function Index() {
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold">
               <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground">FC</span>
-              <span className="hidden sm:inline">Francisco<span className="text-neon">.</span></span>
+              <span className="hidden sm:inline">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
-            <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+            <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
               {NAV.map((n) => (
-                <a key={n.href} href={n.href} className="nav-link">{n.label}</a>
+                <a
+                  key={n.href}
+                  href={n.href}
+                  className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-muted-foreground transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.6)]"
+                >
+                  {n.label}
+                </a>
               ))}
             </nav>
             <a href="#contato" className="hidden md:inline-flex btn-neon items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
@@ -142,7 +187,7 @@ function Index() {
             <div className="md:hidden mt-2 rounded-2xl border border-white/5 bg-background/95 backdrop-blur-xl p-4 fade-up">
               <div className="flex flex-col gap-3">
                 {NAV.map((n) => (
-                  <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="rounded-lg px-3 py-2 text-sm hover:bg-secondary hover:text-neon transition">{n.label}</a>
+                  <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-sm text-center transition hover:text-neon hover:border-primary/60 hover:bg-primary/10">{n.label}</a>
                 ))}
                 <a href="#contato" onClick={() => setMenuOpen(false)} className="btn-neon mt-2 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
                   Fale comigo <ArrowUpRight className="h-4 w-4" />
@@ -164,10 +209,22 @@ function Index() {
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-neon">
               <Sparkles className="h-3.5 w-3.5" /> Disponível para novos projetos
             </span>
-            <h1 className="mt-5 text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.02]">
-              Francisco <br className="hidden sm:block" />
-              <span className="text-neon">Chagas</span>
-            </h1>
+            <div className="mt-5 flex items-center gap-5">
+              <div className="relative shrink-0">
+                <div className="absolute inset-0 rounded-full bg-primary/30 blur-xl" />
+                <img
+                  src={monogram}
+                  alt="Monograma FC"
+                  width={88}
+                  height={88}
+                  className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-primary/60 object-cover shadow-[0_0_30px_-5px_hsl(var(--primary)/0.6)]"
+                />
+              </div>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
+                Francisco <span className="text-neon">Chagas</span>
+                <span className="block text-2xl sm:text-3xl text-muted-foreground font-semibold mt-1">| Web & UX</span>
+              </h1>
+            </div>
             <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
               Desenvolvedor Web em transição para <span className="text-foreground font-semibold">UX/UI</span>, criando interfaces modernas, responsivas e centradas na experiência do usuário.
             </p>
@@ -295,62 +352,55 @@ function Index() {
           </div>
 
           <div className="mt-12 grid md:grid-cols-2 gap-6">
-            {PROJECTS.map((p) => (
-              <article key={p.n} className="card-glow group rounded-3xl overflow-hidden">
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-                  <div className="absolute top-4 left-4 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-mono text-neon">
-                    {p.n}
-                  </div>
-                  {p.featured && (
-                    <div className="absolute top-4 right-4 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">
-                      Case em destaque
+            {PROJECTS.map((p) => {
+              const isOpen = openCase === p.n;
+              return (
+                <article key={p.n} className="card-glow group rounded-3xl overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                    <div className="absolute top-4 left-4 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-mono text-neon">
+                      {p.n}
                     </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">{p.category}</div>
-                  <h3 className="mt-2 text-xl font-bold">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {p.stack.map((s) => (
-                      <span key={s} className="rounded-full border border-white/10 bg-secondary/50 px-2.5 py-1 text-xs text-muted-foreground">{s}</span>
-                    ))}
+                    {p.featured && (
+                      <div className="absolute top-4 right-4 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">
+                        Case em destaque
+                      </div>
+                    )}
                   </div>
-                  <a href="#contato" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neon hover:gap-3 transition-all">
-                    Ver case <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+                  <div className="p-6">
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider">{p.category}</div>
+                    <h3 className="mt-2 text-xl font-bold">{p.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {p.stack.map((s) => (
+                        <span key={s} className="rounded-full border border-white/10 bg-secondary/50 px-2.5 py-1 text-xs text-muted-foreground">{s}</span>
+                      ))}
+                    </div>
+                    <button
+                      onClick={() => setOpenCase(isOpen ? null : p.n)}
+                      aria-expanded={isOpen}
+                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neon hover:gap-3 transition-all"
+                    >
+                      {isOpen ? "Fechar case" : "Ver case"}
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                    </button>
 
-      {/* CASE EM DESTAQUE */}
-      <section className="py-24">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <SectionTag>Case em destaque</SectionTag>
-          <div className="mt-6 rounded-3xl overflow-hidden border border-primary/20 bg-card/60">
-            <div className="grid lg:grid-cols-2">
-              <div className="relative aspect-[4/3] lg:aspect-auto">
-                <img src={projRunner} alt="Francisco Runner" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-r from-card via-card/40 to-transparent lg:bg-gradient-to-l" />
-              </div>
-              <div className="p-8 sm:p-12">
-                <span className="text-xs text-neon font-mono uppercase tracking-widest">Francisco Runner</span>
-                <h3 className="mt-3 text-3xl sm:text-4xl font-bold">Landing page para atleta amador</h3>
-
-                <dl className="mt-8 space-y-5">
-                  <CaseRow label="Problema">Criar uma presença digital visual para apresentar a trajetória como atleta amador.</CaseRow>
-                  <CaseRow label="Objetivo">Desenvolver uma landing page moderna, responsiva e inspiradora.</CaseRow>
-                  <CaseRow label="Solução">Estrutura com storytelling, cards visuais, contraste escuro e destaque para evolução pessoal.</CaseRow>
-                  <CaseRow label="Ferramentas">HTML · CSS · JavaScript · Base44 · Canva / Figma</CaseRow>
-                  <CaseRow label="Resultado">Página com identidade própria, melhor organização visual e navegação clara.</CaseRow>
-                </dl>
-              </div>
-            </div>
+                    {isOpen && (
+                      <div className="mt-5 rounded-2xl border border-primary/20 bg-background/50 p-5 fade-up space-y-4 text-sm leading-relaxed">
+                        <CaseBlock label="Visão geral">{p.caseStudy.overview}</CaseBlock>
+                        <CaseBlock label="Problema">{p.caseStudy.problem}</CaseBlock>
+                        <CaseBlock label="Objetivo">{p.caseStudy.objective}</CaseBlock>
+                        <CaseBlock label="Minha solução">{p.caseStudy.solution}</CaseBlock>
+                        <CaseBlock label="Processo">{p.caseStudy.process}</CaseBlock>
+                        <CaseBlock label="Ferramentas">{p.caseStudy.tools}</CaseBlock>
+                        <CaseBlock label="Resultado">{p.caseStudy.result}</CaseBlock>
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -402,22 +452,22 @@ function Index() {
       </section>
 
       {/* CONTATO */}
-      <section id="contato" className="py-24">
-        <div className="mx-auto max-w-5xl px-5 sm:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-card to-background p-10 sm:p-16 text-center">
-            <div className="absolute -top-20 left-1/2 -translate-x-1/2 h-80 w-80 rounded-full bg-primary/20 blur-3xl pointer-events-none" />
+      <section id="contato" className="py-16">
+        <div className="mx-auto max-w-3xl px-5 sm:px-8">
+          <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card to-background p-6 sm:p-8 text-center transition-all duration-500 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.5)]">
+            <div className="absolute -top-16 left-1/2 -translate-x-1/2 h-56 w-56 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-opacity duration-500 group-hover:opacity-80" />
             <SectionTag>Contato</SectionTag>
-            <h2 className="mt-4 text-3xl sm:text-5xl font-bold leading-tight">
+            <h2 className="mt-3 text-xl sm:text-2xl font-bold leading-tight">
               Vamos construir algo <span className="text-neon">incrível</span> juntos?
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
               Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <a href="mailto:francisco@example.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <a href="mailto:francisco@example.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
                 <Mail className="h-4 w-4" /> francisco@example.com
               </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
+              <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
                 <Linkedin className="h-4 w-4" /> LinkedIn
               </a>
             </div>
@@ -427,11 +477,24 @@ function Index() {
 
       {/* FOOTER */}
       <footer className="border-t border-white/5 py-10">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="text-sm text-muted-foreground">
-            Desenvolvido por <span className="text-foreground font-semibold">Francisco Chagas</span>. Todos os direitos reservados.
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 grid gap-6 sm:grid-cols-3 items-center">
+          <div className="text-sm text-muted-foreground text-center sm:text-left">
+            © {new Date().getFullYear()} <span className="text-foreground font-semibold">Francisco Chagas</span>.
+            <br className="hidden sm:block" />
+            Web Developer & UX/UI Designer — Todos os direitos reservados.
           </div>
-          <div className="flex items-center gap-3">
+
+          <div className="flex justify-center">
+            <a
+              href="#inicio"
+              className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-transform hover:-translate-y-1"
+              aria-label="Voltar ao início"
+            >
+              <ArrowUp className="h-4 w-4" /> Voltar ao início
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3 justify-center sm:justify-end">
             {[
               { icon: Instagram, href: "https://instagram.com/", label: "Instagram" },
               { icon: Linkedin, href: "https://linkedin.com/", label: "LinkedIn" },
@@ -445,6 +508,10 @@ function Index() {
               </a>
             ))}
           </div>
+        </div>
+
+        <div className="mt-6 text-center text-xs text-muted-foreground/70 italic px-5">
+          "Design com propósito. Código com identidade. Interfaces feitas para conectar pessoas."
         </div>
       </footer>
     </div>
@@ -460,11 +527,11 @@ function SectionTag({ children }: { children: React.ReactNode }) {
   );
 }
 
-function CaseRow({ label, children }: { label: string; children: React.ReactNode }) {
+function CaseBlock({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-[110px_1fr] gap-4 items-start">
-      <dt className="text-xs font-mono uppercase tracking-widest text-neon pt-0.5">{label}</dt>
-      <dd className="text-sm text-muted-foreground leading-relaxed">{children}</dd>
+    <div>
+      <div className="text-xs font-mono uppercase tracking-widest text-neon">{label}</div>
+      <p className="mt-1 text-muted-foreground">{children}</p>
     </div>
   );
 }
