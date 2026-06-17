@@ -252,11 +252,11 @@ function Index() {
           </div>
 
           {/* Avatar */}
-          <div className="relative mx-auto lg:mx-0 lg:justify-self-end">
+          <div className="relative mx-auto lg:mx-0 lg:justify-self-end group">
             <div className="relative h-[380px] w-[300px] sm:h-[460px] sm:w-[360px]">
-              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-2xl" />
-              <div className="relative h-full w-full rounded-[32px] overflow-hidden border border-primary/40 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
-                <img src={avatar} alt="Francisco Chagas" className="h-full w-full object-cover" width={896} height={1024} />
+              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-2xl transition-all duration-500 group-hover:from-primary/50 group-hover:via-accent/40" />
+              <div className="relative h-full w-full rounded-[32px] overflow-hidden border border-primary/40 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-primary/80 group-hover:shadow-[0_40px_100px_-20px_hsl(var(--primary)/0.6)]">
+                <img src={avatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" width={1024} height={1024} />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               </div>
 
