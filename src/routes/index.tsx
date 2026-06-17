@@ -352,7 +352,7 @@ function Index() {
             {PROJECTS.map((p) => {
               const isOpen = openCase === p.n;
               return (
-                <article key={p.n} className="card-glow card-stack group rounded-3xl overflow-hidden">
+                <article key={p.n} className="card-glow card-stack group rounded-3xl">
                   <div className="relative aspect-[16/10] overflow-hidden">
                     <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
