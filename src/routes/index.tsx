@@ -3,7 +3,7 @@ import { useState } from "react";
 import {
   ArrowRight,
   ArrowUp,
-  ArrowUpRight,
+  
   Code2,
   Figma,
   Github,
@@ -12,6 +12,7 @@ import {
   Facebook,
   Activity,
   Mail,
+  MessageCircle,
   Menu,
   X,
   Sparkles,
@@ -21,12 +22,14 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import avatar from "../assets/francisco.jpg";
-import monogram from "../assets/fc-monogram.jpg";
+import avatarAsset from "../assets/francisco-profile.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
 import projPortfolio from "../assets/proj-portfolio.jpg";
+
+const avatar = avatarAsset.url;
+const monogram = avatarAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -162,7 +165,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-4">
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground">FC</span>
+              <img src={avatar} alt="Francisco Chagas" className="h-9 w-9 rounded-full border border-primary/60 object-cover shadow-[0_0_16px_-2px_hsl(var(--primary)/0.5)] transition-transform duration-300 hover:scale-110" />
               <span className="hidden sm:inline">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
             <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
@@ -176,22 +179,16 @@ function Index() {
                 </a>
               ))}
             </nav>
-            <a href="#contato" className="hidden md:inline-flex btn-neon items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
-              Fale comigo <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <button onClick={() => setMenuOpen(v => !v)} className="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/10" aria-label="Menu">
+            <button onClick={() => setMenuOpen(v => !v)} className="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/10 transition hover:border-primary/60 hover:text-neon" aria-label="Menu">
               {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
           {menuOpen && (
-            <div className="md:hidden mt-2 rounded-2xl border border-white/5 bg-background/95 backdrop-blur-xl p-4 fade-up">
+            <div className="md:hidden mt-2 rounded-2xl border border-white/5 bg-background/95 backdrop-blur-xl p-4 animate-fade-in">
               <div className="flex flex-col gap-3">
                 {NAV.map((n) => (
-                  <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-sm text-center transition hover:text-neon hover:border-primary/60 hover:bg-primary/10">{n.label}</a>
+                  <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-sm text-center transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10">{n.label}</a>
                 ))}
-                <a href="#contato" onClick={() => setMenuOpen(false)} className="btn-neon mt-2 inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
-                  Fale comigo <ArrowUpRight className="h-4 w-4" />
-                </a>
               </div>
             </div>
           )}
@@ -255,11 +252,11 @@ function Index() {
           </div>
 
           {/* Avatar */}
-          <div className="relative mx-auto lg:mx-0 lg:justify-self-end">
+          <div className="relative mx-auto lg:mx-0 lg:justify-self-end group">
             <div className="relative h-[380px] w-[300px] sm:h-[460px] sm:w-[360px]">
-              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-2xl" />
-              <div className="relative h-full w-full rounded-[32px] overflow-hidden border border-primary/40 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
-                <img src={avatar} alt="Francisco Chagas" className="h-full w-full object-cover" width={896} height={1024} />
+              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-2xl transition-all duration-500 group-hover:from-primary/50 group-hover:via-accent/40" />
+              <div className="relative h-full w-full rounded-[32px] overflow-hidden border border-primary/40 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-primary/80 group-hover:shadow-[0_40px_100px_-20px_hsl(var(--primary)/0.6)]">
+                <img src={avatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" width={1024} height={1024} />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
               </div>
 
@@ -351,12 +348,12 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
             {PROJECTS.map((p) => {
               const isOpen = openCase === p.n;
               return (
-                <article key={p.n} className="card-glow group rounded-3xl overflow-hidden">
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                <article key={p.n} className="card-glow card-stack group rounded-3xl">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
                     <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                     <div className="absolute top-4 left-4 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-mono text-neon">
@@ -464,8 +461,11 @@ function Index() {
               Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-              <a href="mailto:francisco@example.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                <Mail className="h-4 w-4" /> francisco@example.com
+              <a href="mailto:chagassilva06@hotmail.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
+              </a>
+              <a href="https://wa.me/5511977240726" target="_blank" rel="noreferrer" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
               </a>
               <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
                 <Linkedin className="h-4 w-4" /> LinkedIn
