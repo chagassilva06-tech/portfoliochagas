@@ -12,6 +12,7 @@ import {
   Facebook,
   Activity,
   Mail,
+  MessageCircle,
   Menu,
   X,
   Sparkles,
@@ -21,12 +22,14 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-import avatar from "../assets/francisco.jpg";
-import monogram from "../assets/fc-monogram.jpg";
+import avatarAsset from "../assets/francisco-profile.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
 import projPortfolio from "../assets/proj-portfolio.jpg";
+
+const avatar = avatarAsset.url;
+const monogram = avatarAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
