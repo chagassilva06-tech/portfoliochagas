@@ -353,7 +353,7 @@ function Index() {
               const isOpen = openCase === p.n;
               return (
                 <article key={p.n} className="card-glow card-stack group rounded-3xl">
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
                     <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                     <div className="absolute top-4 left-4 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-mono text-neon">
