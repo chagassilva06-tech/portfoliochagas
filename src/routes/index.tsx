@@ -165,7 +165,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-4">
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground">FC</span>
+              <img src={avatar} alt="Francisco Chagas" className="h-9 w-9 rounded-full border border-primary/60 object-cover shadow-[0_0_16px_-2px_hsl(var(--primary)/0.5)] transition-transform duration-300 hover:scale-110" />
               <span className="hidden sm:inline">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
             <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
