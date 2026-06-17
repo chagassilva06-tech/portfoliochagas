@@ -3,7 +3,7 @@ import { useState } from "react";
 import {
   ArrowRight,
   ArrowUp,
-  ArrowUpRight,
+  ArrowUp as _ArrowUpDup,
   Code2,
   Figma,
   Github,
