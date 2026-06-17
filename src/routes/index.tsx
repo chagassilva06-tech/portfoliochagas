@@ -461,8 +461,11 @@ function Index() {
               Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-              <a href="mailto:francisco@example.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                <Mail className="h-4 w-4" /> francisco@example.com
+              <a href="mailto:chagassilva06@hotmail.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
+              </a>
+              <a href="https://wa.me/5511977240726" target="_blank" rel="noreferrer" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                <MessageCircle className="h-4 w-4" /> WhatsApp
               </a>
               <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
                 <Linkedin className="h-4 w-4" /> LinkedIn
