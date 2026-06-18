@@ -523,7 +523,8 @@ function Index() {
       {/* CONTATO + LOGO CAROUSEL */}
       <section id="contato" className="py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 space-y-10">
-          <TechCarousel />
+
+
 
           <div className="mx-auto max-w-3xl">
             <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card to-background p-6 sm:p-8 text-center transition-all duration-500 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_var(--neon)]">
