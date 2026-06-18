@@ -58,6 +58,36 @@
   --ring: oklch(0.86 0.25 145);
   --neon: oklch(0.86 0.25 145);
   --neon-soft: oklch(0.86 0.25 145 / 0.18);
+  --body-bg-1: oklch(0.86 0.25 145 / 0.14);
+  --body-bg-2: oklch(0.62 0.2 280 / 0.16);
+  --body-bg-3: oklch(0.14 0.015 255);
+  --body-bg-4: oklch(0.12 0.015 258);
+}
+
+.light {
+  --background: oklch(0.98 0.005 250);
+  --foreground: oklch(0.18 0.02 255);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.02 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.02 255);
+  --primary: oklch(0.62 0.2 150);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.95 0.01 250);
+  --secondary-foreground: oklch(0.18 0.02 255);
+  --muted: oklch(0.94 0.01 250);
+  --muted-foreground: oklch(0.42 0.02 255);
+  --accent: oklch(0.55 0.18 280);
+  --accent-foreground: oklch(0.98 0 0);
+  --border: oklch(0.88 0.01 255);
+  --input: oklch(0.88 0.01 255);
+  --ring: oklch(0.62 0.2 150);
+  --neon: oklch(0.55 0.2 150);
+  --neon-soft: oklch(0.62 0.2 150 / 0.12);
+  --body-bg-1: oklch(0.62 0.2 150 / 0.08);
+  --body-bg-2: oklch(0.55 0.18 280 / 0.08);
+  --body-bg-3: oklch(0.985 0.005 250);
+  --body-bg-4: oklch(0.96 0.005 250);
 }
 
 @layer base {
@@ -65,9 +95,9 @@
   html { scroll-behavior: smooth; }
   body {
     background:
-      radial-gradient(ellipse at 75% 10%, oklch(0.86 0.25 145 / 0.14), transparent 55%),
-      radial-gradient(ellipse at 10% 90%, oklch(0.62 0.2 280 / 0.16), transparent 55%),
-      linear-gradient(180deg, oklch(0.14 0.015 255), oklch(0.12 0.015 258));
+      radial-gradient(ellipse at 75% 10%, var(--body-bg-1), transparent 55%),
+      radial-gradient(ellipse at 10% 90%, var(--body-bg-2), transparent 55%),
+      linear-gradient(180deg, var(--body-bg-3), var(--body-bg-4));
     background-attachment: fixed;
     color: var(--color-foreground);
     font-family: "Inter", system-ui, sans-serif;
@@ -184,5 +214,29 @@
   .card-stack:hover::after {
     transform: translate(18px, 18px) rotate(5deg);
     opacity: .7;
+  }
+}
+
+@layer utilities {
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-mask {
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+  .process-card {
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, background .35s ease;
+    box-shadow: 0 10px 30px -20px oklch(0 0 0 / 0.5);
+  }
+  .process-card:hover {
+    transform: translateY(-6px);
+    border-color: oklch(0.86 0.25 145 / 0.5);
+    box-shadow: 0 24px 50px -20px oklch(0.86 0.25 145 / 0.35);
   }
 }
