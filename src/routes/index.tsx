@@ -361,9 +361,8 @@ function Index() {
                 <img src={aboutAvatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" style={{ mixBlendMode: "luminosity", filter: "contrast(1.05)" }} />
                 <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-primary/30" />
               </div>
-
-              </div>
             </div>
+
 
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
