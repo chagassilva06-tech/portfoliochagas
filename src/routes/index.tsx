@@ -376,7 +376,7 @@ function Index() {
 
           <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
             {PROJECTS.map((p) => {
-              const isOpen = openCase === p.n;
+              const isOpen = cardAberto === p.n;
               return (
                 <article key={p.n} className="card-glow card-stack group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
@@ -403,7 +403,7 @@ function Index() {
                     </div>
                     <div className="mt-5 flex flex-wrap items-center gap-3">
                       <button
-                        onClick={() => toggleCase(p.n)}
+                        onClick={() => toggleCard(p.n)}
                         aria-expanded={isOpen}
                         className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-primary/10 hover:-translate-y-0.5"
                       >
