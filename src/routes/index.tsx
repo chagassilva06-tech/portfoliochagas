@@ -171,8 +171,8 @@ const TEXT_TECHS = ["Lovable", "Base44", "Prompt Engineering"];
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [openCase, setOpenCase] = useState<string | null>(null);
-  const toggleCase = (n: string) => setOpenCase(prev => prev === n ? null : n);
+  const [cardAberto, setCardAberto] = useState<string | null>(null);
+  const toggleCard = (n: string) => setCardAberto((prev) => (prev === n ? null : n));
 
   useEffect(() => {
     document.documentElement.classList.remove("light");
@@ -185,11 +185,15 @@ function Index() {
       <header className="fixed top-0 inset-x-0 z-50">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-4">
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
-            <a href="#inicio" className="flex items-center gap-2 font-display font-bold group">
-              <div className="relative h-9 w-9 rounded-full overflow-hidden bg-emerald-900/80 border border-emerald-500/40 shadow-[0_0_16px_-4px_rgba(16,185,129,0.4)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_rgba(16,185,129,0.6)]">
-                <img src={menuIcon} alt="Francisco Chagas" className="h-full w-full object-cover" />
-              </div>
-              <span className="hidden sm:inline origin-left transition-transform duration-300 group-hover:scale-105">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
+            <a
+              href="#inicio"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("inicio")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="flex items-center gap-2 font-display font-bold group/logo transition-all duration-300 hover:opacity-90"
+            >
+              <span className="hidden sm:inline origin-left transition-transform duration-300 group-hover/logo:scale-105 group-hover/logo:text-neon">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
 
             <div className="flex items-center gap-2">
