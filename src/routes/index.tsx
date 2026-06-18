@@ -401,7 +401,7 @@ function Index() {
 
           <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
             {PROJECTS.map((p) => {
-              const isOpen = openCase === p.n;
+              const isOpen = openCases.has(p.n);
               return (
                 <article key={p.n} className="card-glow card-stack group rounded-3xl">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
