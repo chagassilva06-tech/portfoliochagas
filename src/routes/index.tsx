@@ -356,8 +356,12 @@ function Index() {
           <SectionTag>Sobre mim</SectionTag>
           <div className="mt-6 grid lg:grid-cols-[280px_1fr] gap-10 items-start">
             <div className="relative">
-              <div className="relative h-64 w-64 mx-auto rounded-3xl overflow-hidden border border-primary/30 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] bg-gradient-to-br from-primary/10 to-accent/10">
-                <img src={heroPhoto} alt="Francisco" className="h-full w-full object-cover" loading="lazy" />
+              <div className="absolute -inset-4 rounded-full bg-primary/20 blur-2xl pointer-events-none" />
+              <div className="relative h-64 w-64 mx-auto rounded-full overflow-hidden border-2 border-primary/50 shadow-[0_20px_50px_-20px_var(--neon-soft)] bg-background" style={{ mixBlendMode: "normal" }}>
+                <img src={aboutAvatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" style={{ mixBlendMode: "luminosity", filter: "contrast(1.05)" }} />
+                <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-primary/30" />
+              </div>
+
               </div>
             </div>
 
