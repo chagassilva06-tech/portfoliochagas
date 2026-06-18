@@ -22,10 +22,13 @@ import {
   ExternalLink,
   Sun,
   Moon,
+  Download,
 } from "lucide-react";
 
-import heroAsset from "../assets/hero-portrait.png.asset.json";
+import heroAsset from "../assets/hero-arms.png.asset.json";
 import menuAvatarAsset from "../assets/menu-avatar.jpeg.asset.json";
+import aboutAvatarAsset from "../assets/about-avatar.png.asset.json";
+import refreshIconAsset from "../assets/refresh-icon.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
@@ -33,6 +36,10 @@ import projPortfolio from "../assets/proj-portfolio.jpg";
 
 const heroPhoto = heroAsset.url;
 const menuAvatar = menuAvatarAsset.url;
+const aboutAvatar = aboutAvatarAsset.url;
+const refreshIcon = refreshIconAsset.url;
+const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -156,7 +163,7 @@ const TECHS = [
   { name: "GitHub", slug: "github", color: "ffffff" },
   { name: "React", slug: "react", color: "61DAFB" },
   { name: "HTML5", slug: "html5", color: "E34F26" },
-  { name: "CSS3", slug: "css3", color: "1572B6" },
+  { name: "CSS3", slug: "css", color: "1572B6" },
   { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
   { name: "Supabase", slug: "supabase", color: "3FCF8E" },
   { name: "Figma", slug: "figma", color: "F24E1E" },
@@ -169,8 +176,15 @@ const TEXT_TECHS = ["Lovable", "Base44", "Prompt Engineering"];
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [openCase, setOpenCase] = useState<string | null>(null);
+  const [openCases, setOpenCases] = useState<Set<string>>(new Set());
+  const toggleCase = (n: string) =>
+    setOpenCases(prev => {
+      const next = new Set(prev);
+      next.has(n) ? next.delete(n) : next.add(n);
+      return next;
+    });
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+
 
   useEffect(() => {
     const stored = (typeof window !== "undefined" && localStorage.getItem("theme")) as "dark" | "light" | null;
@@ -193,7 +207,9 @@ function Index() {
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold group">
               <img src={menuAvatar} alt="Francisco Chagas" className="h-9 w-9 rounded-full border border-primary/60 object-cover shadow-[0_0_16px_-2px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_var(--neon)]" />
               <span className="hidden sm:inline">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
+              <img src={refreshIcon} alt="" aria-hidden="true" className="h-6 w-6 ml-1 transition-transform duration-700 group-hover:rotate-180" />
             </a>
+
             <div className="flex items-center gap-2">
               <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
                 {NAV.map((n) => (
@@ -265,6 +281,10 @@ function Index() {
               <a href="#projetos" className="btn-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
                 Ver projetos <ArrowRight className="h-4 w-4" />
               </a>
+              <a href={CV_URL} download className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
+                <Download className="h-4 w-4" /> Baixar currículo
+              </a>
+
               <a href="https://github.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
                 <Github className="h-4 w-4" /> Repositório GitHub
               </a>
@@ -289,16 +309,19 @@ function Index() {
 
           {/* Hero portrait (transparent PNG, blends with background) */}
           <div className="relative mx-auto lg:mx-0 lg:justify-self-end group">
-            <div className="relative h-[420px] w-[340px] sm:h-[520px] sm:w-[400px] flex items-end justify-center">
-              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/25 via-accent/15 to-transparent blur-3xl transition-all duration-500 group-hover:from-primary/45 group-hover:via-accent/30" />
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 h-72 w-72 sm:h-80 sm:w-80 rounded-full bg-primary/15 blur-2xl pointer-events-none" />
-              <img
-                src={heroPhoto}
-                alt="Francisco Chagas"
-                width={1024}
-                height={1024}
-                className="relative h-full w-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:-translate-y-3 group-hover:scale-[1.03] group-hover:drop-shadow-[0_35px_60px_var(--neon-soft)]"
-              />
+            <div className="relative h-[460px] w-[360px] sm:h-[560px] sm:w-[420px]">
+              <div className="absolute -inset-6 rounded-[44px] bg-gradient-to-br from-primary/25 via-accent/15 to-transparent blur-3xl transition-all duration-500 group-hover:from-primary/45 group-hover:via-accent/30" />
+              <div className="relative h-full w-full rounded-[36px] overflow-hidden border border-primary/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_40px_90px_-20px_var(--neon-soft)]">
+                <img
+                  src={heroPhoto}
+                  alt="Francisco Chagas"
+                  width={1024}
+                  height={1448}
+                  className="h-full w-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/20" />
+              </div>
+
 
               {/* Floating cards */}
               <div className="float absolute -left-4 top-10 hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-card/90 backdrop-blur-md px-4 py-3 shadow-2xl">
@@ -333,10 +356,13 @@ function Index() {
           <SectionTag>Sobre mim</SectionTag>
           <div className="mt-6 grid lg:grid-cols-[280px_1fr] gap-10 items-start">
             <div className="relative">
-              <div className="relative h-64 w-64 mx-auto rounded-3xl overflow-hidden border border-primary/30 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] bg-gradient-to-br from-primary/10 to-accent/10">
-                <img src={heroPhoto} alt="Francisco" className="h-full w-full object-cover" loading="lazy" />
+              <div className="absolute -inset-4 rounded-full bg-primary/20 blur-2xl pointer-events-none" />
+              <div className="relative h-64 w-64 mx-auto rounded-full overflow-hidden border-2 border-primary/50 shadow-[0_20px_50px_-20px_var(--neon-soft)] bg-background" style={{ mixBlendMode: "normal" }}>
+                <img src={aboutAvatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" style={{ mixBlendMode: "luminosity", filter: "contrast(1.05)" }} />
+                <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-primary/30" />
               </div>
             </div>
+
 
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
@@ -387,11 +413,12 @@ function Index() {
 
           <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
             {PROJECTS.map((p) => {
-              const isOpen = openCase === p.n;
+              const isOpen = openCases.has(p.n);
               return (
-                <article key={p.n} className="card-glow card-stack group rounded-3xl">
+                <article key={p.n} className="card-glow card-stack group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
-                    <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                    <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                     <div className="absolute top-4 left-4 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-mono text-neon">
                       {p.n}
@@ -413,7 +440,7 @@ function Index() {
                     </div>
                     <div className="mt-5 flex flex-wrap items-center gap-3">
                       <button
-                        onClick={() => setOpenCase(isOpen ? null : p.n)}
+                        onClick={() => toggleCase(p.n)}
                         aria-expanded={isOpen}
                         className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-primary/10 hover:-translate-y-0.5"
                       >
@@ -459,7 +486,7 @@ function Index() {
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
-                <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                <ul className="mt-3 space-y-1.5 text-sm text-foreground/85">
                   {s.items.map((i) => (
                     <li key={i} className="flex items-center gap-2">
                       <span className="h-1 w-1 rounded-full bg-neon" />
@@ -496,7 +523,8 @@ function Index() {
       {/* CONTATO + LOGO CAROUSEL */}
       <section id="contato" className="py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 space-y-10">
-          <TechCarousel />
+
+
 
           <div className="mx-auto max-w-3xl">
             <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card to-background p-6 sm:p-8 text-center transition-all duration-500 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_var(--neon)]">
