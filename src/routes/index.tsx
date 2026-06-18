@@ -24,14 +24,12 @@ import {
 } from "lucide-react";
 
 import heroAsset from "../assets/hero-arms.png.asset.json";
-import menuIconAsset from "../assets/menu-icon.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
 import projPortfolio from "../assets/proj-portfolio.jpg";
 
 const heroPhoto = heroAsset.url;
-const menuIcon = menuIconAsset.url;
 const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
 
 
