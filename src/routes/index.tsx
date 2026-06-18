@@ -232,15 +232,11 @@ function Index() {
               <Sparkles className="h-3.5 w-3.5" /> Disponível para novos projetos
             </span>
             <div className="mt-5 flex items-center gap-5">
-              <div className="relative shrink-0">
-                <div className="absolute inset-0 rounded-full bg-primary/30 blur-xl" />
-                <img
-                  src={menuAvatar}
-                  alt="Francisco Chagas"
-                  width={88}
-                  height={88}
-                  className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-primary/60 object-cover shadow-[0_0_30px_-5px_var(--neon)]"
-                />
+              <div className="group/title relative shrink-0">
+                <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-xl transition-opacity duration-500 group-hover/title:opacity-90" />
+                <div className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-2xl border-2 border-primary/60 bg-card/70 font-display text-2xl sm:text-3xl font-bold text-neon shadow-[0_0_30px_-5px_var(--neon)] transition-all duration-500 group-hover/title:-translate-y-1 group-hover/title:scale-110 group-hover/title:rotate-3">
+                  FC
+                </div>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
                 Francisco <span className="text-neon">Chagas</span>
@@ -330,8 +326,8 @@ function Index() {
           <div className="mt-6 grid lg:grid-cols-[280px_1fr] gap-10 items-start">
             <div className="relative">
               <div className="absolute -inset-4 rounded-full bg-primary/20 blur-2xl pointer-events-none" />
-              <div className="relative h-64 w-64 mx-auto rounded-full overflow-hidden border-2 border-primary/50 shadow-[0_20px_50px_-20px_var(--neon-soft)] bg-background" style={{ mixBlendMode: "normal" }}>
-                <img src={aboutAvatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" style={{ mixBlendMode: "luminosity", filter: "contrast(1.05)" }} />
+              <div className="relative h-64 w-64 mx-auto rounded-full overflow-hidden border-2 border-primary/50 shadow-[0_20px_50px_-20px_var(--neon-soft)] bg-background">
+                <img src={aboutAvatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
                 <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-primary/30" />
               </div>
             </div>
@@ -386,7 +382,7 @@ function Index() {
 
           <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
             {PROJECTS.map((p) => {
-              const isOpen = openCases.has(p.n);
+              const isOpen = openCase === p.n;
               return (
                 <article key={p.n} className="card-glow card-stack group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
                   <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
@@ -513,7 +509,7 @@ function Index() {
                 <a href="mailto:chagassilva06@hotmail.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
                   <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
                 </a>
-                <a href="https://wa.me/5511977240726" target="_blank" rel="noreferrer" title="Fale comigo no WhatsApp" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                <a href="https://wa.me/5511977240726?text=Ol%C3%A1%2C%20Francisco!%20Vim%20pelo%20seu%20portf%C3%B3lio." target="_blank" rel="noreferrer" title="Fale comigo no WhatsApp" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
                   <MessageCircle className="h-4 w-4" /> Fale comigo no WhatsApp
                 </a>
                 <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
