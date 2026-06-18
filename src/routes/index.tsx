@@ -173,8 +173,7 @@ function Index() {
   const toggleCard = (n: string) => setCardAberto((prev) => (prev === n ? null : n));
 
   useEffect(() => {
-    document.documentElement.classList.remove("light");
-    try { localStorage.removeItem("theme"); } catch {}
+    // noop — avoids SSR/client mismatch from DOM manipulation
   }, []);
 
   return (
