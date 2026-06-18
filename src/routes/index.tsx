@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   ArrowUp,
-  
   Code2,
   Figma,
   Github,
@@ -20,16 +19,20 @@ import {
   Wrench,
   HeartHandshake,
   ChevronDown,
+  ExternalLink,
+  Sun,
+  Moon,
 } from "lucide-react";
 
-import avatarAsset from "../assets/francisco-profile.png.asset.json";
+import heroAsset from "../assets/hero-portrait.png.asset.json";
+import menuAvatarAsset from "../assets/menu-avatar.jpeg.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
 import projPortfolio from "../assets/proj-portfolio.jpg";
 
-const avatar = avatarAsset.url;
-const monogram = avatarAsset.url;
+const heroPhoto = heroAsset.url;
+const menuAvatar = menuAvatarAsset.url;
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -51,6 +54,9 @@ const NAV = [
   { label: "Contato", href: "#contato" },
 ];
 
+const PROJECT_LINK = "https://francisco-app.base44.app/";
+const REPO_LINK = "https://github.com/";
+
 const PROJECTS = [
   {
     n: "01",
@@ -60,6 +66,8 @@ const PROJECTS = [
     desc: "Site pessoal para atleta amador, com foco em storytelling, UX, responsividade e identidade visual.",
     img: projRunner,
     featured: true,
+    live: PROJECT_LINK,
+    repo: REPO_LINK,
     caseStudy: {
       overview: "A Landing Page Francisco Runner é um projeto pessoal criado para apresentar minha trajetória como atleta amador autodidata no mundo da corrida de rua. O objetivo foi construir uma página visual, moderna e responsiva, usando storytelling, identidade visual forte e uma experiência de navegação simples e direta.",
       problem: "Eu precisava de uma página que apresentasse minha história na corrida de forma mais profissional, organizada e visual. A ideia era sair de uma apresentação simples e criar uma experiência mais completa, com imagens, textos curtos, cards e uma narrativa clara da minha evolução como corredor.",
@@ -77,6 +85,8 @@ const PROJECTS = [
     stack: ["HTML", "CSS", "JavaScript", "UX/UI"],
     desc: "Projeto estilo Linktree personalizado, com foco em identidade, usabilidade e conversão.",
     img: projLinks,
+    live: PROJECT_LINK,
+    repo: REPO_LINK,
     caseStudy: {
       overview: "Página de links personalizada para centralizar contatos, redes sociais e projetos em um único lugar com identidade visual coerente.",
       problem: "Centralizar minhas redes e projetos em um link único, evitando soluções genéricas e sem identidade visual.",
@@ -94,6 +104,8 @@ const PROJECTS = [
     stack: ["Excel", "Base44", "UX"],
     desc: "Organização de dados para controle de entregas, fornecedores e notas fiscais.",
     img: projDashboard,
+    live: PROJECT_LINK,
+    repo: REPO_LINK,
     caseStudy: {
       overview: "Dashboard interno para acompanhar fornecedores, entregas e notas fiscais com visão centralizada e filtros úteis.",
       problem: "As informações de fornecedores estavam dispersas em planilhas e documentos, dificultando o acompanhamento operacional.",
@@ -111,6 +123,8 @@ const PROJECTS = [
     stack: ["HTML", "CSS", "JavaScript", "Design System"],
     desc: "Este próprio portfólio como projeto: estrutura, design system, responsividade e processo.",
     img: projPortfolio,
+    live: PROJECT_LINK,
+    repo: REPO_LINK,
     caseStudy: {
       overview: "Meu portfólio pessoal pensado como produto: design system, identidade visual, responsividade e narrativa de processo.",
       problem: "Eu precisava de um espaço próprio para apresentar projetos, habilidades e processo de forma consistente.",
@@ -124,26 +138,10 @@ const PROJECTS = [
 ];
 
 const SKILLS = [
-  {
-    icon: Code2,
-    title: "Desenvolvimento Web",
-    items: ["HTML", "CSS", "JavaScript", "GitHub", "VS Code"],
-  },
-  {
-    icon: Layout,
-    title: "UX / UI Design",
-    items: ["Wireframe", "Prototipação", "Responsividade", "Hierarquia visual", "Experiência do usuário"],
-  },
-  {
-    icon: Wrench,
-    title: "Ferramentas",
-    items: ["Figma", "Canva", "Base44", "Excel", "GitHub Pages", "Lovable"],
-  },
-  {
-    icon: HeartHandshake,
-    title: "Soft skills",
-    items: ["Organização", "Análise de processos", "Comunicação", "Controle de informações", "Visão operacional"],
-  },
+  { icon: Code2, title: "Desenvolvimento Web", items: ["HTML", "CSS", "JavaScript", "GitHub", "VS Code"] },
+  { icon: Layout, title: "UX / UI Design", items: ["Wireframe", "Prototipação", "Responsividade", "Hierarquia visual", "Experiência do usuário"] },
+  { icon: Wrench, title: "Ferramentas", items: ["Figma", "Canva", "Base44", "Excel", "GitHub Pages", "Lovable"] },
+  { icon: HeartHandshake, title: "Soft skills", items: ["Organização", "Análise de processos", "Comunicação", "Controle de informações", "Visão operacional"] },
 ];
 
 const PROCESS = [
@@ -153,10 +151,38 @@ const PROCESS = [
   { n: "04", t: "Testar e iterar", d: "Validação com usuários e ajustes finos." },
 ];
 
+const TECHS = [
+  { name: "Git", slug: "git", color: "F05032" },
+  { name: "GitHub", slug: "github", color: "ffffff" },
+  { name: "React", slug: "react", color: "61DAFB" },
+  { name: "HTML5", slug: "html5", color: "E34F26" },
+  { name: "CSS3", slug: "css3", color: "1572B6" },
+  { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
+  { name: "Supabase", slug: "supabase", color: "3FCF8E" },
+  { name: "Figma", slug: "figma", color: "F24E1E" },
+  { name: "Vite", slug: "vite", color: "646CFF" },
+  { name: "TailwindCSS", slug: "tailwindcss", color: "06B6D4" },
+];
+
+const TEXT_TECHS = ["Lovable", "Base44", "Prompt Engineering"];
+
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [openCase, setOpenCase] = useState<string | null>(null);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const stored = (typeof window !== "undefined" && localStorage.getItem("theme")) as "dark" | "light" | null;
+    if (stored) setTheme(stored);
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "light") root.classList.add("light");
+    else root.classList.remove("light");
+    try { localStorage.setItem("theme", theme); } catch {}
+  }, [theme]);
 
   return (
     <div className="min-h-screen text-foreground">
@@ -164,30 +190,40 @@ function Index() {
       <header className="fixed top-0 inset-x-0 z-50">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-4">
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
-            <a href="#inicio" className="flex items-center gap-2 font-display font-bold">
-              <img src={avatar} alt="Francisco Chagas" className="h-9 w-9 rounded-full border border-primary/60 object-cover shadow-[0_0_16px_-2px_hsl(var(--primary)/0.5)] transition-transform duration-300 hover:scale-110" />
+            <a href="#inicio" className="flex items-center gap-2 font-display font-bold group">
+              <img src={menuAvatar} alt="Francisco Chagas" className="h-9 w-9 rounded-full border border-primary/60 object-cover shadow-[0_0_16px_-2px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_var(--neon)]" />
               <span className="hidden sm:inline">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
-            <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
-              {NAV.map((n) => (
-                <a
-                  key={n.href}
-                  href={n.href}
-                  className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-muted-foreground transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_hsl(var(--primary)/0.6)]"
-                >
-                  {n.label}
-                </a>
-              ))}
-            </nav>
-            <button onClick={() => setMenuOpen(v => !v)} className="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/10 transition hover:border-primary/60 hover:text-neon" aria-label="Menu">
-              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+            <div className="flex items-center gap-2">
+              <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
+                {NAV.map((n) => (
+                  <a
+                    key={n.href}
+                    href={n.href}
+                    className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-muted-foreground transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10 hover:scale-110 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_var(--neon)]"
+                  >
+                    {n.label}
+                  </a>
+                ))}
+              </nav>
+              <button
+                onClick={() => setTheme(t => t === "dark" ? "light" : "dark")}
+                aria-label="Alternar tema"
+                title={theme === "dark" ? "Modo claro" : "Modo escuro"}
+                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-secondary/40 text-muted-foreground transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10 hover:scale-110 hover:rotate-12 hover:shadow-[0_0_18px_-4px_var(--neon)]"
+              >
+                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+              </button>
+              <button onClick={() => setMenuOpen(v => !v)} className="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/10 transition hover:border-primary/60 hover:text-neon hover:scale-110" aria-label="Menu">
+                {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
           </div>
           {menuOpen && (
             <div className="md:hidden mt-2 rounded-2xl border border-white/5 bg-background/95 backdrop-blur-xl p-4 animate-fade-in">
               <div className="flex flex-col gap-3">
                 {NAV.map((n) => (
-                  <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-sm text-center transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10">{n.label}</a>
+                  <a key={n.href} href={n.href} onClick={() => setMenuOpen(false)} className="rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-sm text-center transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10 hover:scale-105">{n.label}</a>
                 ))}
               </div>
             </div>
@@ -210,11 +246,11 @@ function Index() {
               <div className="relative shrink-0">
                 <div className="absolute inset-0 rounded-full bg-primary/30 blur-xl" />
                 <img
-                  src={monogram}
-                  alt="Monograma FC"
+                  src={menuAvatar}
+                  alt="Francisco Chagas"
                   width={88}
                   height={88}
-                  className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-primary/60 object-cover shadow-[0_0_30px_-5px_hsl(var(--primary)/0.6)]"
+                  className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full border-2 border-primary/60 object-cover shadow-[0_0_30px_-5px_var(--neon)]"
                 />
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
@@ -251,31 +287,35 @@ function Index() {
             </div>
           </div>
 
-          {/* Avatar */}
+          {/* Hero portrait (transparent PNG, blends with background) */}
           <div className="relative mx-auto lg:mx-0 lg:justify-self-end group">
-            <div className="relative h-[380px] w-[300px] sm:h-[460px] sm:w-[360px]">
-              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-2xl transition-all duration-500 group-hover:from-primary/50 group-hover:via-accent/40" />
-              <div className="relative h-full w-full rounded-[32px] overflow-hidden border border-primary/40 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-primary/80 group-hover:shadow-[0_40px_100px_-20px_hsl(var(--primary)/0.6)]">
-                <img src={avatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" width={1024} height={1024} />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-              </div>
+            <div className="relative h-[420px] w-[340px] sm:h-[520px] sm:w-[400px] flex items-end justify-center">
+              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/25 via-accent/15 to-transparent blur-3xl transition-all duration-500 group-hover:from-primary/45 group-hover:via-accent/30" />
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 h-72 w-72 sm:h-80 sm:w-80 rounded-full bg-primary/15 blur-2xl pointer-events-none" />
+              <img
+                src={heroPhoto}
+                alt="Francisco Chagas"
+                width={1024}
+                height={1024}
+                className="relative h-full w-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:-translate-y-3 group-hover:scale-[1.03] group-hover:drop-shadow-[0_35px_60px_var(--neon-soft)]"
+              />
 
               {/* Floating cards */}
-              <div className="float absolute -left-8 top-10 hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-card/90 backdrop-blur-md px-4 py-3 shadow-2xl">
+              <div className="float absolute -left-4 top-10 hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-card/90 backdrop-blur-md px-4 py-3 shadow-2xl">
                 <div className="grid h-9 w-9 place-items-center rounded-lg bg-primary/15 text-neon"><Code2 className="h-4 w-4" /></div>
                 <div>
                   <div className="text-xs text-muted-foreground">Stack</div>
                   <div className="text-sm font-semibold">HTML · CSS · JS</div>
                 </div>
               </div>
-              <div className="float absolute -right-6 bottom-12 hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-card/90 backdrop-blur-md px-4 py-3 shadow-2xl" style={{ animationDelay: "-3s" }}>
+              <div className="float absolute -right-2 bottom-24 hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-card/90 backdrop-blur-md px-4 py-3 shadow-2xl" style={{ animationDelay: "-3s" }}>
                 <div className="grid h-9 w-9 place-items-center rounded-lg bg-accent/20 text-accent"><Figma className="h-4 w-4" /></div>
                 <div>
                   <div className="text-xs text-muted-foreground">UX/UI</div>
                   <div className="text-sm font-semibold">Figma · Lovable</div>
                 </div>
               </div>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 grid h-3 w-3 place-items-center rounded-full bg-primary pulse-ring" />
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 grid h-3 w-3 place-items-center rounded-full bg-primary pulse-ring" />
             </div>
           </div>
         </div>
@@ -293,11 +333,8 @@ function Index() {
           <SectionTag>Sobre mim</SectionTag>
           <div className="mt-6 grid lg:grid-cols-[280px_1fr] gap-10 items-start">
             <div className="relative">
-              <div className="relative h-64 w-64 mx-auto rounded-3xl overflow-hidden border border-primary/30 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]">
-                <img src={avatar} alt="Francisco" className="h-full w-full object-cover" loading="lazy" />
-              </div>
-              <div className="absolute -bottom-4 -right-2 rounded-2xl bg-primary text-primary-foreground px-4 py-2 text-xs font-bold shadow-lg">
-                Em transição → UX/UI
+              <div className="relative h-64 w-64 mx-auto rounded-3xl overflow-hidden border border-primary/30 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)] bg-gradient-to-br from-primary/10 to-accent/10">
+                <img src={heroPhoto} alt="Francisco" className="h-full w-full object-cover" loading="lazy" />
               </div>
             </div>
 
@@ -326,7 +363,7 @@ function Index() {
                     Atualmente desenvolvo projetos próprios para consolidar minha transição para a área de tecnologia, aplicando conhecimentos de design system, prototipação no Figma e desenvolvimento responsivo com HTML, CSS e JavaScript.
                   </p>
                   <blockquote className="mt-5 border-l-2 border-primary pl-4 italic text-foreground/90">
-                    "Tenho formação em ADS, experiência profissional com processos e dados, e agora estou aplicando essa base na criação de interfaces web, projetos visuais e soluções digitais."
+                    "Tenho experiência profissional com processos e dados, e agora estou aplicando essa base na criação de interfaces web, projetos visuais e soluções digitais."
                   </blockquote>
                 </div>
               )}
@@ -374,14 +411,22 @@ function Index() {
                         <span key={s} className="rounded-full border border-white/10 bg-secondary/50 px-2.5 py-1 text-xs text-muted-foreground">{s}</span>
                       ))}
                     </div>
-                    <button
-                      onClick={() => setOpenCase(isOpen ? null : p.n)}
-                      aria-expanded={isOpen}
-                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-neon hover:gap-3 transition-all"
-                    >
-                      {isOpen ? "Fechar case" : "Ver case"}
-                      <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                    </button>
+                    <div className="mt-5 flex flex-wrap items-center gap-3">
+                      <button
+                        onClick={() => setOpenCase(isOpen ? null : p.n)}
+                        aria-expanded={isOpen}
+                        className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-primary/10 hover:-translate-y-0.5"
+                      >
+                        {isOpen ? "Fechar case" : "Ver case"}
+                        <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                      </button>
+                      <a href={p.live} target="_blank" rel="noreferrer" className="btn-neon inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
+                        <ExternalLink className="h-4 w-4" /> Acessar projeto
+                      </a>
+                      <a href={p.repo} target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
+                        <Github className="h-4 w-4" /> Repositório
+                      </a>
+                    </div>
 
                     {isOpen && (
                       <div className="mt-5 rounded-2xl border border-primary/20 bg-background/50 p-5 fade-up space-y-4 text-sm leading-relaxed">
@@ -435,7 +480,7 @@ function Index() {
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold">Do problema à interface final</h2>
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {PROCESS.map((p, idx) => (
-              <div key={p.n} className="relative rounded-2xl border border-white/5 bg-card/60 p-6">
+              <div key={p.n} className="process-card relative rounded-2xl border border-white/5 bg-card/60 p-6">
                 <div className="font-mono text-sm text-neon">{p.n}</div>
                 <h3 className="mt-3 text-lg font-bold">{p.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.d}</p>
@@ -448,30 +493,36 @@ function Index() {
         </div>
       </section>
 
-      {/* CONTATO */}
+      {/* CONTATO + LOGO CAROUSEL */}
       <section id="contato" className="py-16">
-        <div className="mx-auto max-w-3xl px-5 sm:px-8">
-          <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card to-background p-6 sm:p-8 text-center transition-all duration-500 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.5)]">
-            <div className="absolute -top-16 left-1/2 -translate-x-1/2 h-56 w-56 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-opacity duration-500 group-hover:opacity-80" />
-            <SectionTag>Contato</SectionTag>
-            <h2 className="mt-3 text-xl sm:text-2xl font-bold leading-tight">
-              Vamos construir algo <span className="text-neon">incrível</span> juntos?
-            </h2>
-            <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
-              Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
-            </p>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-              <a href="mailto:chagassilva06@hotmail.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
-              </a>
-              <a href="https://wa.me/5511977240726" target="_blank" rel="noreferrer" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                <MessageCircle className="h-4 w-4" /> WhatsApp
-              </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                <Linkedin className="h-4 w-4" /> LinkedIn
-              </a>
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 space-y-10">
+          <TechCarousel />
+
+          <div className="mx-auto max-w-3xl">
+            <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card to-background p-6 sm:p-8 text-center transition-all duration-500 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_var(--neon)]">
+              <div className="absolute -top-16 left-1/2 -translate-x-1/2 h-56 w-56 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-opacity duration-500 group-hover:opacity-80" />
+              <SectionTag>Contato</SectionTag>
+              <h2 className="mt-3 text-xl sm:text-2xl font-bold leading-tight">
+                Vamos construir algo <span className="text-neon">incrível</span> juntos?
+              </h2>
+              <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
+                Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
+              </p>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+                <a href="mailto:chagassilva06@hotmail.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                  <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
+                </a>
+                <a href="https://wa.me/5511977240726" target="_blank" rel="noreferrer" title="Fale comigo no WhatsApp" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                  <MessageCircle className="h-4 w-4" /> Fale comigo no WhatsApp
+                </a>
+                <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+                  <Linkedin className="h-4 w-4" /> LinkedIn
+                </a>
+              </div>
             </div>
           </div>
+
+          <TechCarousel reverse />
         </div>
       </section>
 
@@ -532,6 +583,42 @@ function CaseBlock({ label, children }: { label: string; children: React.ReactNo
     <div>
       <div className="text-xs font-mono uppercase tracking-widest text-neon">{label}</div>
       <p className="mt-1 text-muted-foreground">{children}</p>
+    </div>
+  );
+}
+
+function TechCarousel({ reverse = false }: { reverse?: boolean }) {
+  const items = [
+    ...TECHS.map(t => ({ kind: "icon" as const, ...t })),
+    ...TEXT_TECHS.map(name => ({ kind: "text" as const, name })),
+  ];
+  const loop = [...items, ...items];
+  return (
+    <div className="marquee-mask overflow-hidden rounded-2xl border border-white/5 bg-card/40 py-5">
+      <div
+        className="marquee-track gap-10 px-6"
+        style={reverse ? { animationDirection: "reverse" } : undefined}
+      >
+        {loop.map((t, i) => (
+          <div key={i} className="flex items-center gap-2 text-muted-foreground/80 shrink-0">
+            {t.kind === "icon" ? (
+              <>
+                <img
+                  src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`}
+                  alt={t.name}
+                  className="h-7 w-7 opacity-90"
+                  loading="lazy"
+                />
+                <span className="text-sm font-semibold whitespace-nowrap">{t.name}</span>
+              </>
+            ) : (
+              <span className="text-sm font-semibold whitespace-nowrap rounded-full border border-primary/30 bg-primary/10 text-neon px-3 py-1">
+                {t.name}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
