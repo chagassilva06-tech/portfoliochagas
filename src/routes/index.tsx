@@ -173,8 +173,7 @@ function Index() {
   const toggleCard = (n: string) => setCardAberto((prev) => (prev === n ? null : n));
 
   useEffect(() => {
-    document.documentElement.classList.remove("light");
-    try { localStorage.removeItem("theme"); } catch {}
+    // noop — avoids SSR/client mismatch from DOM manipulation
   }, []);
 
   return (
@@ -211,6 +210,8 @@ function Index() {
               </button>
             </div>
           </div>
+          {/* Yellow accent bar below nav */}
+          <div className="mt-1 h-1.5 w-full rounded-full bg-gradient-to-r from-blue-900 via-blue-800 to-emerald-900 border-b-2 border-yellow-400 shadow-[0_2px_8px_-2px_rgba(250,204,21,0.4)]" />
           {menuOpen && (
             <div className="md:hidden mt-2 rounded-2xl border border-white/5 bg-background/95 backdrop-blur-xl p-4 animate-fade-in">
               <div className="flex flex-col gap-3">
