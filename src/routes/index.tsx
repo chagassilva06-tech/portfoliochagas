@@ -20,15 +20,12 @@ import {
   HeartHandshake,
   ChevronDown,
   ExternalLink,
-  Sun,
-  Moon,
   Download,
 } from "lucide-react";
 
 import heroAsset from "../assets/hero-arms.png.asset.json";
 import menuAvatarAsset from "../assets/menu-avatar.jpeg.asset.json";
 import aboutAvatarAsset from "../assets/about-avatar.png.asset.json";
-import refreshIconAsset from "../assets/refresh-icon.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
@@ -37,7 +34,6 @@ import projPortfolio from "../assets/proj-portfolio.jpg";
 const heroPhoto = heroAsset.url;
 const menuAvatar = menuAvatarAsset.url;
 const aboutAvatar = aboutAvatarAsset.url;
-const refreshIcon = refreshIconAsset.url;
 const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
 
 
@@ -176,27 +172,13 @@ const TEXT_TECHS = ["Lovable", "Base44", "Prompt Engineering"];
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [openCases, setOpenCases] = useState<Set<string>>(new Set());
-  const toggleCase = (n: string) =>
-    setOpenCases(prev => {
-      const next = new Set(prev);
-      next.has(n) ? next.delete(n) : next.add(n);
-      return next;
-    });
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-
+  const [openCase, setOpenCase] = useState<string | null>(null);
+  const toggleCase = (n: string) => setOpenCase(prev => prev === n ? null : n);
 
   useEffect(() => {
-    const stored = (typeof window !== "undefined" && localStorage.getItem("theme")) as "dark" | "light" | null;
-    if (stored) setTheme(stored);
+    document.documentElement.classList.remove("light");
+    try { localStorage.removeItem("theme"); } catch {}
   }, []);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "light") root.classList.add("light");
-    else root.classList.remove("light");
-    try { localStorage.setItem("theme", theme); } catch {}
-  }, [theme]);
 
   return (
     <div className="min-h-screen text-foreground">
@@ -206,8 +188,7 @@ function Index() {
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold group">
               <img src={menuAvatar} alt="Francisco Chagas" className="h-9 w-9 rounded-full border border-primary/60 object-cover shadow-[0_0_16px_-2px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_var(--neon)]" />
-              <span className="hidden sm:inline">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
-              <img src={refreshIcon} alt="" aria-hidden="true" className="h-6 w-6 ml-1 transition-transform duration-700 group-hover:rotate-180" />
+              <span className="hidden sm:inline origin-left transition-transform duration-300 group-hover:scale-105">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
 
             <div className="flex items-center gap-2">
@@ -222,14 +203,6 @@ function Index() {
                   </a>
                 ))}
               </nav>
-              <button
-                onClick={() => setTheme(t => t === "dark" ? "light" : "dark")}
-                aria-label="Alternar tema"
-                title={theme === "dark" ? "Modo claro" : "Modo escuro"}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-secondary/40 text-muted-foreground transition-all duration-300 hover:text-neon hover:border-primary/60 hover:bg-primary/10 hover:scale-110 hover:rotate-12 hover:shadow-[0_0_18px_-4px_var(--neon)]"
-              >
-                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </button>
               <button onClick={() => setMenuOpen(v => !v)} className="md:hidden grid h-10 w-10 place-items-center rounded-lg border border-white/10 transition hover:border-primary/60 hover:text-neon hover:scale-110" aria-label="Menu">
                 {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
