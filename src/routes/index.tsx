@@ -11,7 +11,7 @@ import {
   Facebook,
   Activity,
   Mail,
-  MessageCircle,
+  Phone,
   Menu,
   X,
   Sparkles,
@@ -25,7 +25,6 @@ import {
 
 import heroAsset from "../assets/hero-arms.png.asset.json";
 import menuIconAsset from "../assets/menu-icon.png.asset.json";
-import aboutAvatarAsset from "../assets/about-avatar.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
@@ -33,8 +32,8 @@ import projPortfolio from "../assets/proj-portfolio.jpg";
 
 const heroPhoto = heroAsset.url;
 const menuIcon = menuIconAsset.url;
-const aboutAvatar = aboutAvatarAsset.url;
 const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
+
 
 
 export const Route = createFileRoute("/")({
@@ -187,7 +186,9 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-4">
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold group">
-              <img src={menuIcon} alt="Francisco Chagas" className="h-9 w-9 rounded-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_var(--neon)]" />
+              <div className="relative h-9 w-9 rounded-full overflow-hidden bg-emerald-900/80 border border-emerald-500/40 shadow-[0_0_16px_-4px_rgba(16,185,129,0.4)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_rgba(16,185,129,0.6)]">
+                <img src={menuIcon} alt="Francisco Chagas" className="h-full w-full object-cover" />
+              </div>
               <span className="hidden sm:inline origin-left transition-transform duration-300 group-hover:scale-105">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
 
@@ -323,46 +324,35 @@ function Index() {
       <section id="sobre" className="py-24">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionTag>Sobre mim</SectionTag>
-          <div className="mt-6 grid lg:grid-cols-[280px_1fr] gap-10 items-start">
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-full bg-primary/20 blur-2xl pointer-events-none" />
-              <div className="relative h-64 w-64 mx-auto rounded-full overflow-hidden border-2 border-primary/50 shadow-[0_20px_50px_-20px_var(--neon-soft)] bg-background">
-                <img src={aboutAvatar} alt="Francisco Chagas" className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
-                <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-primary/30" />
+          <div className="mt-6 max-w-3xl">
+            <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
+              Formado em ADS, em transição para <span className="text-neon">Web e UX/UI</span>.
+            </h2>
+            <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
+              Formado em Análise e Desenvolvimento de Sistemas, atualmente desenvolvendo projetos próprios com foco em interfaces modernas, responsividade e experiência do usuário.
+            </p>
+
+            <button
+              onClick={() => setAboutOpen(v => !v)}
+              className="btn-ghost-neon mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
+            >
+              {aboutOpen ? "Fechar" : "Ler mais sobre mim"}
+              <ChevronDown className={`h-4 w-4 transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
+            </button>
+
+            {aboutOpen && (
+              <div className="mt-6 rounded-2xl border border-white/5 bg-card/60 p-6 fade-up">
+                <p className="text-muted-foreground leading-relaxed">
+                  Sou formado em Análise e Desenvolvimento de Sistemas e estou direcionando minha carreira para o desenvolvimento web, UX/UI e criação de interfaces digitais. Tenho experiência administrativa, o que fortalece minha visão de organização, processos, análise de dados e resolução de problemas.
+                </p>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  Atualmente desenvolvo projetos próprios para consolidar minha transição para a área de tecnologia, aplicando conhecimentos de design system, prototipação no Figma e desenvolvimento responsivo com HTML, CSS e JavaScript.
+                </p>
+                <blockquote className="mt-5 border-l-2 border-primary pl-4 italic text-foreground/90">
+                  "Tenho experiência profissional com processos e dados, e agora estou aplicando essa base na criação de interfaces web, projetos visuais e soluções digitais."
+                </blockquote>
               </div>
-            </div>
-
-
-            <div>
-              <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
-                Formado em ADS, em transição para <span className="text-neon">Web e UX/UI</span>.
-              </h2>
-              <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
-                Formado em Análise e Desenvolvimento de Sistemas, atualmente desenvolvendo projetos próprios com foco em interfaces modernas, responsividade e experiência do usuário.
-              </p>
-
-              <button
-                onClick={() => setAboutOpen(v => !v)}
-                className="btn-ghost-neon mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
-              >
-                {aboutOpen ? "Fechar" : "Ler mais sobre mim"}
-                <ChevronDown className={`h-4 w-4 transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
-              </button>
-
-              {aboutOpen && (
-                <div className="mt-6 rounded-2xl border border-white/5 bg-card/60 p-6 fade-up">
-                  <p className="text-muted-foreground leading-relaxed">
-                    Sou formado em Análise e Desenvolvimento de Sistemas e estou direcionando minha carreira para o desenvolvimento web, UX/UI e criação de interfaces digitais. Tenho experiência administrativa, o que fortalece minha visão de organização, processos, análise de dados e resolução de problemas.
-                  </p>
-                  <p className="mt-4 text-muted-foreground leading-relaxed">
-                    Atualmente desenvolvo projetos próprios para consolidar minha transição para a área de tecnologia, aplicando conhecimentos de design system, prototipação no Figma e desenvolvimento responsivo com HTML, CSS e JavaScript.
-                  </p>
-                  <blockquote className="mt-5 border-l-2 border-primary pl-4 italic text-foreground/90">
-                    "Tenho experiência profissional com processos e dados, e agora estou aplicando essa base na criação de interfaces web, projetos visuais e soluções digitais."
-                  </blockquote>
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </section>
@@ -493,8 +483,6 @@ function Index() {
       <section id="contato" className="py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 space-y-10">
 
-
-
           <div className="mx-auto max-w-3xl">
             <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card to-background p-6 sm:p-8 text-center transition-all duration-500 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_var(--neon)]">
               <div className="absolute -top-16 left-1/2 -translate-x-1/2 h-56 w-56 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-opacity duration-500 group-hover:opacity-80" />
@@ -505,15 +493,12 @@ function Index() {
               <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
                 Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
               </p>
-              <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-                <a href="mailto:chagassilva06@hotmail.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
+                <a href="tel:+5511977240726" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-neon transition">
+                  <Phone className="h-4 w-4" /> 11 977240726
+                </a>
+                <a href="mailto:chagassilva06@hotmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-neon transition">
                   <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
-                </a>
-                <a href="https://wa.me/5511977240726?text=Ol%C3%A1%2C%20Francisco!%20Vim%20pelo%20seu%20portf%C3%B3lio." target="_blank" rel="noreferrer" title="Fale comigo no WhatsApp" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                  <MessageCircle className="h-4 w-4" /> Fale comigo no WhatsApp
-                </a>
-                <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                  <Linkedin className="h-4 w-4" /> LinkedIn
                 </a>
               </div>
             </div>
@@ -527,9 +512,9 @@ function Index() {
       <footer className="border-t border-white/5 py-10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 grid gap-6 sm:grid-cols-3 items-center">
           <div className="text-sm text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} <span className="text-foreground font-semibold">Francisco Chagas</span>.
+            © 2026 <span className="text-foreground font-semibold">Francisco Chagas</span>.
             <br className="hidden sm:block" />
-            Web Developer & UX/UI Designer — Todos os direitos reservados.
+            Web Developer & UX/UI Designer
           </div>
 
           <div className="flex justify-center">
