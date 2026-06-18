@@ -11,7 +11,7 @@ import {
   Facebook,
   Activity,
   Mail,
-  MessageCircle,
+  Phone,
   Menu,
   X,
   Sparkles,
@@ -25,7 +25,6 @@ import {
 
 import heroAsset from "../assets/hero-arms.png.asset.json";
 import menuIconAsset from "../assets/menu-icon.png.asset.json";
-import aboutAvatarAsset from "../assets/about-avatar.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
@@ -33,8 +32,8 @@ import projPortfolio from "../assets/proj-portfolio.jpg";
 
 const heroPhoto = heroAsset.url;
 const menuIcon = menuIconAsset.url;
-const aboutAvatar = aboutAvatarAsset.url;
 const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
+
 
 
 export const Route = createFileRoute("/")({
@@ -187,7 +186,9 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 mt-4">
           <div className="flex items-center justify-between rounded-2xl border border-white/5 bg-background/70 backdrop-blur-xl px-5 py-3 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.7)]">
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold group">
-              <img src={menuIcon} alt="Francisco Chagas" className="h-9 w-9 rounded-full object-cover transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_var(--neon)]" />
+              <div className="relative h-9 w-9 rounded-full overflow-hidden bg-emerald-900/80 border border-emerald-500/40 shadow-[0_0_16px_-4px_rgba(16,185,129,0.4)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_rgba(16,185,129,0.6)]">
+                <img src={menuIcon} alt="Francisco Chagas" className="h-full w-full object-cover" />
+              </div>
               <span className="hidden sm:inline origin-left transition-transform duration-300 group-hover:scale-105">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
             </a>
 
