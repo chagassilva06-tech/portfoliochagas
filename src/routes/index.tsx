@@ -281,6 +281,10 @@ function Index() {
               <a href="#projetos" className="btn-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
                 Ver projetos <ArrowRight className="h-4 w-4" />
               </a>
+              <a href={CV_URL} download className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
+                <Download className="h-4 w-4" /> Baixar currículo
+              </a>
+
               <a href="https://github.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
                 <Github className="h-4 w-4" /> Repositório GitHub
               </a>
