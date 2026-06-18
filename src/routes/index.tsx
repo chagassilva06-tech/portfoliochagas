@@ -483,8 +483,6 @@ function Index() {
       <section id="contato" className="py-16">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 space-y-10">
 
-
-
           <div className="mx-auto max-w-3xl">
             <div className="group relative overflow-hidden rounded-2xl border border-primary/30 bg-gradient-to-br from-card to-background p-6 sm:p-8 text-center transition-all duration-500 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_20px_60px_-20px_var(--neon)]">
               <div className="absolute -top-16 left-1/2 -translate-x-1/2 h-56 w-56 rounded-full bg-primary/20 blur-3xl pointer-events-none transition-opacity duration-500 group-hover:opacity-80" />
@@ -495,15 +493,12 @@ function Index() {
               <p className="mt-2 text-sm text-muted-foreground max-w-xl mx-auto">
                 Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
               </p>
-              <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
-                <a href="mailto:chagassilva06@hotmail.com" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+              <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
+                <a href="tel:+5511977240726" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-neon transition">
+                  <Phone className="h-4 w-4" /> 11 977240726
+                </a>
+                <a href="mailto:chagassilva06@hotmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-neon transition">
                   <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
-                </a>
-                <a href="https://wa.me/5511977240726?text=Ol%C3%A1%2C%20Francisco!%20Vim%20pelo%20seu%20portf%C3%B3lio." target="_blank" rel="noreferrer" title="Fale comigo no WhatsApp" className="btn-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                  <MessageCircle className="h-4 w-4" /> Fale comigo no WhatsApp
-                </a>
-                <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
-                  <Linkedin className="h-4 w-4" /> LinkedIn
                 </a>
               </div>
             </div>
@@ -517,9 +512,9 @@ function Index() {
       <footer className="border-t border-white/5 py-10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 grid gap-6 sm:grid-cols-3 items-center">
           <div className="text-sm text-muted-foreground text-center sm:text-left">
-            © {new Date().getFullYear()} <span className="text-foreground font-semibold">Francisco Chagas</span>.
+            © 2026 <span className="text-foreground font-semibold">Francisco Chagas</span>.
             <br className="hidden sm:block" />
-            Web Developer & UX/UI Designer — Todos os direitos reservados.
+            Web Developer & UX/UI Designer
           </div>
 
           <div className="flex justify-center">
