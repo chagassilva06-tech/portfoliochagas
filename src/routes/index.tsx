@@ -22,10 +22,13 @@ import {
   ExternalLink,
   Sun,
   Moon,
+  Download,
 } from "lucide-react";
 
-import heroAsset from "../assets/hero-portrait.png.asset.json";
+import heroAsset from "../assets/hero-arms.png.asset.json";
 import menuAvatarAsset from "../assets/menu-avatar.jpeg.asset.json";
+import aboutAvatarAsset from "../assets/about-avatar.png.asset.json";
+import refreshIconAsset from "../assets/refresh-icon.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
@@ -33,6 +36,10 @@ import projPortfolio from "../assets/proj-portfolio.jpg";
 
 const heroPhoto = heroAsset.url;
 const menuAvatar = menuAvatarAsset.url;
+const aboutAvatar = aboutAvatarAsset.url;
+const refreshIcon = refreshIconAsset.url;
+const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
