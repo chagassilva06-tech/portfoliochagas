@@ -427,7 +427,7 @@ function Index() {
                     </div>
                     <div className="mt-5 flex flex-wrap items-center gap-3">
                       <button
-                        onClick={() => setOpenCase(isOpen ? null : p.n)}
+                        onClick={() => toggleCase(p.n)}
                         aria-expanded={isOpen}
                         className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-primary/10 hover:-translate-y-0.5"
                       >
