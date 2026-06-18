@@ -309,16 +309,19 @@ function Index() {
 
           {/* Hero portrait (transparent PNG, blends with background) */}
           <div className="relative mx-auto lg:mx-0 lg:justify-self-end group">
-            <div className="relative h-[420px] w-[340px] sm:h-[520px] sm:w-[400px] flex items-end justify-center">
-              <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-primary/25 via-accent/15 to-transparent blur-3xl transition-all duration-500 group-hover:from-primary/45 group-hover:via-accent/30" />
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 h-72 w-72 sm:h-80 sm:w-80 rounded-full bg-primary/15 blur-2xl pointer-events-none" />
-              <img
-                src={heroPhoto}
-                alt="Francisco Chagas"
-                width={1024}
-                height={1024}
-                className="relative h-full w-auto object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] transition-all duration-500 group-hover:-translate-y-3 group-hover:scale-[1.03] group-hover:drop-shadow-[0_35px_60px_var(--neon-soft)]"
-              />
+            <div className="relative h-[460px] w-[360px] sm:h-[560px] sm:w-[420px]">
+              <div className="absolute -inset-6 rounded-[44px] bg-gradient-to-br from-primary/25 via-accent/15 to-transparent blur-3xl transition-all duration-500 group-hover:from-primary/45 group-hover:via-accent/30" />
+              <div className="relative h-full w-full rounded-[36px] overflow-hidden border border-primary/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_40px_90px_-20px_var(--neon-soft)]">
+                <img
+                  src={heroPhoto}
+                  alt="Francisco Chagas"
+                  width={1024}
+                  height={1448}
+                  className="h-full w-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/20" />
+              </div>
+
 
               {/* Floating cards */}
               <div className="float absolute -left-4 top-10 hidden sm:flex items-center gap-3 rounded-2xl border border-white/10 bg-card/90 backdrop-blur-md px-4 py-3 shadow-2xl">
