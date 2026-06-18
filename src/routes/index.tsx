@@ -176,8 +176,15 @@ const TEXT_TECHS = ["Lovable", "Base44", "Prompt Engineering"];
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [openCase, setOpenCase] = useState<string | null>(null);
+  const [openCases, setOpenCases] = useState<Set<string>>(new Set());
+  const toggleCase = (n: string) =>
+    setOpenCases(prev => {
+      const next = new Set(prev);
+      next.has(n) ? next.delete(n) : next.add(n);
+      return next;
+    });
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+
 
   useEffect(() => {
     const stored = (typeof window !== "undefined" && localStorage.getItem("theme")) as "dark" | "light" | null;
