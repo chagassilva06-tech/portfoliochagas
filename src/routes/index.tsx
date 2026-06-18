@@ -486,7 +486,7 @@ function Index() {
                   <s.icon className="h-5 w-5" />
                 </div>
                 <h3 className="mt-4 text-lg font-bold">{s.title}</h3>
-                <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                <ul className="mt-3 space-y-1.5 text-sm text-foreground/85">
                   {s.items.map((i) => (
                     <li key={i} className="flex items-center gap-2">
                       <span className="h-1 w-1 rounded-full bg-neon" />
