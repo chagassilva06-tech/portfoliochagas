@@ -207,7 +207,9 @@ function Index() {
             <a href="#inicio" className="flex items-center gap-2 font-display font-bold group">
               <img src={menuAvatar} alt="Francisco Chagas" className="h-9 w-9 rounded-full border border-primary/60 object-cover shadow-[0_0_16px_-2px_hsl(var(--primary)/0.5)] transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_var(--neon)]" />
               <span className="hidden sm:inline">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
+              <img src={refreshIcon} alt="" aria-hidden="true" className="h-6 w-6 ml-1 transition-transform duration-700 group-hover:rotate-180" />
             </a>
+
             <div className="flex items-center gap-2">
               <nav className="hidden md:flex items-center gap-2 text-sm font-medium">
                 {NAV.map((n) => (
