@@ -163,7 +163,7 @@ const TECHS = [
   { name: "GitHub", slug: "github", color: "ffffff" },
   { name: "React", slug: "react", color: "61DAFB" },
   { name: "HTML5", slug: "html5", color: "E34F26" },
-  { name: "CSS3", slug: "css3", color: "1572B6" },
+  { name: "CSS3", slug: "css", color: "1572B6" },
   { name: "JavaScript", slug: "javascript", color: "F7DF1E" },
   { name: "Supabase", slug: "supabase", color: "3FCF8E" },
   { name: "Figma", slug: "figma", color: "F24E1E" },
