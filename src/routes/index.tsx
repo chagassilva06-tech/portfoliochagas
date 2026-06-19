@@ -277,12 +277,8 @@ function Index() {
               <a href={CV_URL} download className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
                 <Download className="h-4 w-4" /> Baixar currículo
               </a>
-
               <a href="https://github.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
                 <Github className="h-4 w-4" /> Repositório GitHub
-              </a>
-              <a href="https://linkedin.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
-                <Linkedin className="h-4 w-4" /> LinkedIn
               </a>
             </div>
 
@@ -292,7 +288,7 @@ function Index() {
                 { k: "ADS", v: "Formação" },
                 { k: "UX/UI", v: "Em transição" },
               ].map((s) => (
-                <div key={s.v} className="rounded-xl border border-white/5 bg-card/60 p-4 text-center">
+                <div key={s.v} className="rounded-xl border border-white/5 bg-card/60 p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_var(--neon-soft)] hover:border-primary/30">
                   <div className="text-2xl font-bold text-neon">{s.k}</div>
                   <div className="text-xs text-muted-foreground mt-1">{s.v}</div>
                 </div>
