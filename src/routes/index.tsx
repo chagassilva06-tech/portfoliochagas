@@ -169,8 +169,28 @@ const TEXT_TECHS = ["Lovable", "Base44", "Prompt Engineering"];
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [aboutOpen, setAboutOpen] = useState(false);
-  const [cardAberto, setCardAberto] = useState<string | null>(null);
-  const toggleCard = (n: string) => setCardAberto((prev) => (prev === n ? null : n));
+  const [projetoSelecionado, setProjetoSelecionado] = useState<string | null>(null);
+
+  const abrirModal = (n: string) => setProjetoSelecionado(n);
+  const fecharModal = () => setProjetoSelecionado(null);
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") fecharModal();
+    };
+    if (projetoSelecionado) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleEsc);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [projetoSelecionado]);
+
+  const projetoAtivo = PROJECTS.find((p) => p.n === projetoSelecionado);
 
   useEffect(() => {
     // noop — avoids SSR/client mismatch from DOM manipulation
