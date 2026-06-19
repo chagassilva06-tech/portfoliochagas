@@ -390,64 +390,47 @@ function Index() {
           </div>
 
           <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
-            {PROJECTS.map((p) => {
-              const isOpen = cardAberto === p.n;
-              return (
-                <article key={p.n} className="card-glow card-stack group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
-                    <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
+            {PROJECTS.map((p) => (
+              <article key={p.n} className="card-glow group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl">
+                  <img src={p.img} alt={p.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
-                    <div className="absolute top-4 left-4 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-mono text-neon">
-                      {p.n}
-                    </div>
-                    {p.featured && (
-                      <div className="absolute top-4 right-4 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">
-                        Case em destaque
-                      </div>
-                    )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                  <div className="absolute top-4 left-4 rounded-full bg-background/80 backdrop-blur-md px-3 py-1 text-xs font-mono text-neon">
+                    {p.n}
                   </div>
-                  <div className="p-6">
-                    <div className="text-xs text-muted-foreground uppercase tracking-wider">{p.category}</div>
-                    <h3 className="mt-2 text-xl font-bold">{p.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {p.stack.map((s) => (
-                        <span key={s} className="rounded-full border border-white/10 bg-secondary/50 px-2.5 py-1 text-xs text-muted-foreground">{s}</span>
-                      ))}
+                  {p.featured && (
+                    <div className="absolute top-4 right-4 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">
+                      Case em destaque
                     </div>
-                    <div className="mt-5 flex flex-wrap items-center gap-3">
-                      <button
-                        onClick={() => toggleCard(p.n)}
-                        aria-expanded={isOpen}
-                        className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-primary/10 hover:-translate-y-0.5"
-                      >
-                        {isOpen ? "Fechar case" : "Ver case"}
-                        <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
-                      </button>
-                      <a href={p.live} target="_blank" rel="noreferrer" className="btn-neon inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
-                        <ExternalLink className="h-4 w-4" /> Acessar projeto
-                      </a>
-                      <a href={p.repo} target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
-                        <Github className="h-4 w-4" /> Repositório
-                      </a>
-                    </div>
-
-                    {isOpen && (
-                      <div className="mt-5 rounded-2xl border border-primary/20 bg-background/50 p-5 fade-up space-y-4 text-sm leading-relaxed">
-                        <CaseBlock label="Visão geral">{p.caseStudy.overview}</CaseBlock>
-                        <CaseBlock label="Problema">{p.caseStudy.problem}</CaseBlock>
-                        <CaseBlock label="Objetivo">{p.caseStudy.objective}</CaseBlock>
-                        <CaseBlock label="Minha solução">{p.caseStudy.solution}</CaseBlock>
-                        <CaseBlock label="Processo">{p.caseStudy.process}</CaseBlock>
-                        <CaseBlock label="Ferramentas">{p.caseStudy.tools}</CaseBlock>
-                        <CaseBlock label="Resultado">{p.caseStudy.result}</CaseBlock>
-                      </div>
-                    )}
+                  )}
+                </div>
+                <div className="p-6">
+                  <div className="text-xs text-muted-foreground uppercase tracking-wider">{p.category}</div>
+                  <h3 className="mt-2 text-xl font-bold">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {p.stack.map((s) => (
+                      <span key={s} className="rounded-full border border-white/10 bg-secondary/50 px-2.5 py-1 text-xs text-muted-foreground">{s}</span>
+                    ))}
                   </div>
-                </article>
-              );
-            })}
+                  <div className="mt-5 flex flex-wrap items-center gap-3">
+                    <button
+                      onClick={() => abrirModal(p.n)}
+                      className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-neon transition-all hover:bg-primary/10 hover:-translate-y-0.5"
+                    >
+                      Ver case <ArrowRight className="h-4 w-4" />
+                    </button>
+                    <a href={p.live} target="_blank" rel="noreferrer" className="btn-neon inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
+                      <ExternalLink className="h-4 w-4" /> Acessar projeto
+                    </a>
+                    <a href={p.repo} target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
+                      <Github className="h-4 w-4" /> Repositório
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
