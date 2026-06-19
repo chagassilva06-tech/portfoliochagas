@@ -334,7 +334,7 @@ function Index() {
 
         <div className="mt-16 flex justify-center text-muted-foreground">
           <a href="#sobre" className="flex flex-col items-center gap-1 text-xs hover:text-neon transition">
-            Role para conhecer <ChevronDown className="h-4 w-4 animate-bounce" />
+            Veja mais <ChevronDown className="h-4 w-4 animate-bounce" />
           </a>
         </div>
       </section>
@@ -382,10 +382,10 @@ function Index() {
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
               <SectionTag>Projetos</SectionTag>
-              <h2 className="mt-4 text-3xl sm:text-4xl font-bold">Trabalhos selecionados</h2>
+              <h2 className="mt-4 text-3xl sm:text-4xl font-bold">Meus trabalhos</h2>
             </div>
             <p className="text-muted-foreground max-w-md">
-              Quatro projetos que mostram minha trajetória: do código à experiência do usuário.
+              Alguns projetos que mostram minha trajetória: do código à experiência do usuário.
             </p>
           </div>
 
@@ -515,7 +515,7 @@ function Index() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 grid gap-6 sm:grid-cols-3 items-center">
           <div className="text-sm text-muted-foreground text-center sm:text-left">
             © 2026 <span className="text-foreground font-semibold">Francisco Chagas</span>.
-            <br className="hidden sm:block" />
+            <br />
             Web Developer & UX/UI Designer
           </div>
 
