@@ -258,8 +258,8 @@ function Index() {
             </span>
             <div className="mt-5 flex items-center gap-5">
               <div className="group/title relative shrink-0">
-                <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-xl transition-opacity duration-500 group-hover/title:opacity-90" />
-                <div className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center overflow-hidden rounded-2xl border-2 border-primary/60 bg-card/70 shadow-[0_0_30px_-5px_var(--neon)] transition-all duration-500 group-hover/title:-translate-y-1 group-hover/title:scale-110 group-hover/title:rotate-3">
+                <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-xl opacity-60 transition-opacity duration-500 group-hover/title:opacity-80" />
+                <div className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center overflow-hidden rounded-2xl border-2 border-primary/60 bg-card/70 shadow-[0_0_20px_-8px_var(--neon)] transition-transform duration-500 group-hover/title:scale-[1.03]">
                   <img src={fcLogoAsset.url} alt="Logotipo FC - Francisco Chagas" className="h-full w-full object-cover" />
                 </div>
               </div>
