@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 import heroAsset from "../assets/hero-arms.png.asset.json";
+import fcLogoAsset from "../assets/fc-logo.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
@@ -258,8 +259,8 @@ function Index() {
             <div className="mt-5 flex items-center gap-5">
               <div className="group/title relative shrink-0">
                 <div className="absolute inset-0 rounded-2xl bg-primary/30 blur-xl transition-opacity duration-500 group-hover/title:opacity-90" />
-                <div className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center rounded-2xl border-2 border-primary/60 bg-card/70 font-display text-2xl sm:text-3xl font-bold text-neon shadow-[0_0_30px_-5px_var(--neon)] transition-all duration-500 group-hover/title:-translate-y-1 group-hover/title:scale-110 group-hover/title:rotate-3">
-                  FC
+                <div className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center overflow-hidden rounded-2xl border-2 border-primary/60 bg-card/70 shadow-[0_0_30px_-5px_var(--neon)] transition-all duration-500 group-hover/title:-translate-y-1 group-hover/title:scale-110 group-hover/title:rotate-3">
+                  <img src={fcLogoAsset.url} alt="Logotipo FC - Francisco Chagas" className="h-full w-full object-cover" />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
