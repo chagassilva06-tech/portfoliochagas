@@ -246,7 +246,7 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="inicio" className="relative pt-36 pb-24 overflow-hidden">
+      <section id="inicio" className="relative pt-28 pb-12 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
         <div className="absolute -top-24 right-0 h-[480px] w-[480px] rounded-full bg-primary/20 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-24 h-[420px] w-[420px] rounded-full bg-accent/20 blur-3xl pointer-events-none" />
@@ -377,7 +377,7 @@ function Index() {
 
 
       {/* PROJETOS */}
-      <section id="projetos" className="py-24">
+      <section id="projetos" className="py-12">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
@@ -436,7 +436,7 @@ function Index() {
       </section>
 
       {/* HABILIDADES */}
-      <section id="habilidades" className="py-24">
+      <section id="habilidades" className="py-12">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionTag>Habilidades</SectionTag>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold">O que eu trago para o time</h2>
@@ -462,7 +462,7 @@ function Index() {
       </section>
 
       {/* PROCESSO */}
-      <section className="py-24">
+      <section className="py-12">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionTag>Processo de criação</SectionTag>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold">Do problema à interface final</h2>
@@ -482,7 +482,7 @@ function Index() {
       </section>
 
       {/* CONTATO + LOGO CAROUSEL */}
-      <section id="contato" className="py-16">
+      <section id="contato" className="py-10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 space-y-10">
 
           <div className="mx-auto max-w-3xl">
