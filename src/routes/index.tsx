@@ -459,7 +459,7 @@ function Index() {
           <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {PROCESS.map((p, idx) => (
               <div key={p.n} className="process-card relative rounded-2xl border border-white/5 bg-card/60 p-6">
-                <div className="font-mono text-sm text-neon">{p.n}</div>
+                
                 <h3 className="mt-3 text-lg font-bold">{p.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.d}</p>
                 {idx < PROCESS.length - 1 && (
