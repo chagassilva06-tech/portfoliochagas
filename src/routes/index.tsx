@@ -353,7 +353,7 @@ function Index() {
 
             <div className="mt-6 rounded-2xl border border-white/5 bg-card/60 p-6">
               <p className="text-muted-foreground leading-relaxed">
-                Sou formado em Análise e Desenvolvimento de Sistemas e estou direcionando minha carreira para o desenvolvimento web, UX/UI e criação de interfaces digitais. Tenho experiência administrativa, o que fortalece minha visão de organização, processos, análise de dados e resolução de problemas.
+                Tenho experiência administrativa, o que fortalece minha visão de organização, processos, análise de dados e resolução de problemas.
               </p>
               <p className="mt-4 text-muted-foreground leading-relaxed">
                 Atualmente desenvolvo projetos próprios para consolidar minha transição para a área de tecnologia, aplicando conhecimentos de design system, prototipação no Figma e desenvolvimento responsivo com HTML, CSS e JavaScript.
