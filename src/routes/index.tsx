@@ -345,20 +345,11 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionTag>Sobre mim</SectionTag>
           <div className="mt-6 max-w-3xl">
-            <h2 className="text-3xl sm:text-4xl font-bold leading-tight">
-              Formado em ADS, em transição para <span className="text-neon">Web e UX/UI</span>.
-            </h2>
             <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
               Formado em Análise e Desenvolvimento de Sistemas, atualmente desenvolvendo projetos próprios com foco em interfaces modernas, responsividade e experiência do usuário.
             </p>
 
-            <a
-              href="#contato"
-              className="btn-ghost-neon mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
-            >
-              Ler mais sobre mim
-              <ChevronDown className="h-4 w-4" />
-            </a>
+
 
             <div className="mt-6 rounded-2xl border border-white/5 bg-card/60 p-6">
               <p className="text-muted-foreground leading-relaxed">
