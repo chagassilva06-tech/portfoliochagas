@@ -341,7 +341,7 @@ function Index() {
       </section>
 
       {/* SOBRE */}
-      <section id="sobre" className="py-24">
+      <section id="sobre" className="py-12">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionTag>Sobre mim</SectionTag>
           <div className="mt-6 max-w-3xl">
@@ -352,30 +352,29 @@ function Index() {
               Formado em Análise e Desenvolvimento de Sistemas, atualmente desenvolvendo projetos próprios com foco em interfaces modernas, responsividade e experiência do usuário.
             </p>
 
-            <button
-              onClick={() => setAboutOpen(v => !v)}
+            <a
+              href="#contato"
               className="btn-ghost-neon mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold"
             >
-              {aboutOpen ? "Fechar" : "Ler mais sobre mim"}
-              <ChevronDown className={`h-4 w-4 transition-transform ${aboutOpen ? "rotate-180" : ""}`} />
-            </button>
+              Ler mais sobre mim
+              <ChevronDown className="h-4 w-4" />
+            </a>
 
-            {aboutOpen && (
-              <div className="mt-6 rounded-2xl border border-white/5 bg-card/60 p-6 fade-up">
-                <p className="text-muted-foreground leading-relaxed">
-                  Sou formado em Análise e Desenvolvimento de Sistemas e estou direcionando minha carreira para o desenvolvimento web, UX/UI e criação de interfaces digitais. Tenho experiência administrativa, o que fortalece minha visão de organização, processos, análise de dados e resolução de problemas.
-                </p>
-                <p className="mt-4 text-muted-foreground leading-relaxed">
-                  Atualmente desenvolvo projetos próprios para consolidar minha transição para a área de tecnologia, aplicando conhecimentos de design system, prototipação no Figma e desenvolvimento responsivo com HTML, CSS e JavaScript.
-                </p>
-                <blockquote className="mt-5 border-l-2 border-primary pl-4 italic text-foreground/90">
-                  "Tenho experiência profissional com processos e dados, e agora estou aplicando essa base na criação de interfaces web, projetos visuais e soluções digitais."
-                </blockquote>
-              </div>
-            )}
+            <div className="mt-6 rounded-2xl border border-white/5 bg-card/60 p-6">
+              <p className="text-muted-foreground leading-relaxed">
+                Sou formado em Análise e Desenvolvimento de Sistemas e estou direcionando minha carreira para o desenvolvimento web, UX/UI e criação de interfaces digitais. Tenho experiência administrativa, o que fortalece minha visão de organização, processos, análise de dados e resolução de problemas.
+              </p>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Atualmente desenvolvo projetos próprios para consolidar minha transição para a área de tecnologia, aplicando conhecimentos de design system, prototipação no Figma e desenvolvimento responsivo com HTML, CSS e JavaScript.
+              </p>
+              <blockquote className="mt-5 border-l-2 border-primary pl-4 italic text-foreground/90">
+                "Tenho experiência profissional com processos e dados, e agora estou aplicando essa base na criação de interfaces web, projetos visuais e soluções digitais."
+              </blockquote>
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* PROJETOS */}
       <section id="projetos" className="py-24">
