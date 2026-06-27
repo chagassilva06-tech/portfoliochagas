@@ -271,7 +271,7 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="inicio" className="relative pt-28 pb-12 overflow-hidden">
+      <section id="inicio" className="relative pt-28 pb-4 overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
         <div className="absolute -top-24 right-0 h-[480px] w-[480px] rounded-full bg-primary/20 blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 -left-24 h-[420px] w-[420px] rounded-full bg-accent/20 blur-3xl pointer-events-none" />
@@ -366,7 +366,7 @@ function Index() {
       </section>
 
       {/* SOBRE */}
-      <section id="sobre" className="py-12">
+      <section id="sobre" className="pt-4 pb-12">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionTag>Sobre mim</SectionTag>
           <div className="mt-6 max-w-3xl">
