@@ -25,7 +25,8 @@ import {
 
 import heroAsset from "../assets/hero-arms.png.asset.json";
 import fcLogoAsset from "../assets/fc-logo.png.asset.json";
-import projRunner from "../assets/proj-runner.jpg";
+import projRunnerAsset from "../assets/runner-cover.png.asset.json";
+const projRunner = projRunnerAsset.url;
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
 import projPortfolioAsset from "../assets/portfolio-cover.png.asset.json";
