@@ -28,7 +28,8 @@ import fcLogoAsset from "../assets/fc-logo.png.asset.json";
 import projRunner from "../assets/proj-runner.jpg";
 import projLinks from "../assets/proj-links.jpg";
 import projDashboard from "../assets/proj-dashboard.jpg";
-import projPortfolio from "../assets/proj-portfolio.jpg";
+import projPortfolioAsset from "../assets/portfolio-cover.png.asset.json";
+const projPortfolio = projPortfolioAsset.url;
 
 const heroPhoto = heroAsset.url;
 const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
