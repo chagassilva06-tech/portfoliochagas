@@ -387,8 +387,9 @@ function Index() {
           <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
             {PROJECTS.map((p) => (
               <article key={p.n} className="card-glow group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl bg-background flex items-center justify-center">
-                  <img src={p.img} alt={p.title} className="h-full w-full object-contain object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl bg-background flex items-center justify-center p-4">
+                  <img src={p.img} alt={p.title} className="max-h-full max-w-full object-contain object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+
 
 
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
