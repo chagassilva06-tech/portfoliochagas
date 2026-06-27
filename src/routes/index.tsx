@@ -33,6 +33,8 @@ import projDashboardAsset from "../assets/dashboard-cover.png.asset.json";
 const projDashboard = projDashboardAsset.url;
 import projPortfolioAsset from "../assets/portfolio-cover.png.asset.json";
 const projPortfolio = projPortfolioAsset.url;
+import projPMAsset from "../assets/product-manager-cover.png.asset.json";
+const projPM = projPMAsset.url;
 
 const heroPhoto = heroAsset.url;
 const CV_URL = "/Curriculo_Francisco_Chagas_2025.pdf";
@@ -138,6 +140,25 @@ const PROJECTS = [
       process: "Definição dos links prioritários, esboço visual, prototipação rápida e implementação em HTML, CSS e JS puro.",
       tools: "HTML, CSS, JavaScript e conceitos de UX/UI.",
       result: "Uma página leve, com carregamento rápido, identidade própria e foco em conversão para os principais canais.",
+    },
+  },
+  {
+    n: "05",
+    title: "Product Manager",
+    category: "Sistema • Gestão de Produtos",
+    stack: ["HTML", "CSS", "JavaScript", "Base44"],
+    desc: "Sistema para organizar, cadastrar e gerenciar produtos.",
+    img: projPM,
+    live: PROJECT_LINK,
+    repo: REPO_LINK,
+    caseStudy: {
+      overview: "Sistema desenvolvido para organizar, cadastrar e gerenciar produtos de forma simples e centralizada, com foco em usabilidade e controle operacional.",
+      problem: "Era necessário centralizar o cadastro e o acompanhamento de produtos em uma interface única, evitando planilhas dispersas e perda de informação.",
+      objective: "Criar uma ferramenta clara para cadastrar, editar, listar e gerenciar produtos com agilidade e boa experiência de uso.",
+      solution: "Interface com formulários objetivos, listagem organizada, filtros e ações rápidas, priorizando hierarquia visual e fluxo direto.",
+      process: "Mapeamento dos campos essenciais, definição dos fluxos de cadastro/edição, prototipação e implementação responsiva.",
+      tools: "HTML, CSS, JavaScript, Base44 e princípios de UX/UI.",
+      result: "Um sistema funcional e organizado que facilita a gestão de produtos, reduz erros e melhora o controle do catálogo.",
     },
   },
 ];
