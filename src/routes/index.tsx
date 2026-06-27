@@ -368,7 +368,7 @@ function Index() {
       {/* SOBRE */}
       <section id="sobre" className="pt-4 pb-6">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <SectionTag>Sobre mim</SectionTag>
+          <div className="flex justify-center"><SectionTag>Sobre mim</SectionTag></div>
           <div className="mt-6 max-w-3xl">
             <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
               Formado em Análise e Desenvolvimento de Sistemas, atualmente desenvolvendo projetos próprios com foco em interfaces modernas, responsividade e experiência do usuário.
