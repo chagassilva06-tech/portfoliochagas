@@ -366,7 +366,7 @@ function Index() {
       </section>
 
       {/* SOBRE */}
-      <section id="sobre" className="pt-4 pb-12">
+      <section id="sobre" className="pt-4 pb-6">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionTag>Sobre mim</SectionTag>
           <div className="mt-6 max-w-3xl">
@@ -393,7 +393,7 @@ function Index() {
 
 
       {/* PROJETOS */}
-      <section id="projetos" className="py-12">
+      <section id="projetos" className="pt-4 pb-12">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <div className="flex items-end justify-between flex-wrap gap-4">
             <div>
