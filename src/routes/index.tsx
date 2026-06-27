@@ -28,7 +28,8 @@ import fcLogoAsset from "../assets/fc-logo.png.asset.json";
 import projRunnerAsset from "../assets/runner-cover.png.asset.json";
 const projRunner = projRunnerAsset.url;
 import projLinks from "../assets/proj-links.jpg";
-import projDashboard from "../assets/proj-dashboard.jpg";
+import projDashboardAsset from "../assets/dashboard-cover.png.asset.json";
+const projDashboard = projDashboardAsset.url;
 import projPortfolioAsset from "../assets/portfolio-cover.png.asset.json";
 const projPortfolio = projPortfolioAsset.url;
 
