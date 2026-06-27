@@ -215,7 +215,7 @@ function Index() {
               }}
               className="flex items-center gap-2 font-display font-bold group/logo transition-all duration-300 hover:opacity-90"
             >
-              <span className="hidden sm:inline origin-left transition-transform duration-300 group-hover/logo:scale-105 group-hover/logo:text-neon">Francisco Chagas<span className="text-neon"> | </span>Web & UX</span>
+              <span className="text-sm sm:text-base origin-left transition-transform duration-300 group-hover/logo:scale-105 group-hover/logo:text-neon whitespace-nowrap">Francisco Chagas<span className="text-neon"> | </span><span className="hidden sm:inline">Web & UX</span></span>
             </a>
 
             <div className="flex items-center gap-2">
