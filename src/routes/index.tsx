@@ -130,7 +130,7 @@ const PROJECTS = [
     stack: ["HTML", "CSS", "JavaScript", "Base44"],
     desc: "Sistema para organizar, cadastrar e gerenciar produtos.",
     img: projPM,
-    live: PROJECT_LINK,
+    live: "https://gestaoprodutofrancisco.lovable.app/",
     repo: REPO_LINK,
     caseStudy: {
       overview: "Sistema desenvolvido para organizar, cadastrar e gerenciar produtos de forma simples e centralizada, com foco em usabilidade e controle operacional.",
