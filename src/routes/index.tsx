@@ -111,7 +111,7 @@ const PROJECTS = [
     stack: ["Excel", "Base44", "UX"],
     desc: "Organização de dados para controle de entregas, fornecedores e notas fiscais.",
     img: projDashboard,
-    live: "https://delivery-view-central.lovable.app/",
+    live: "https://dashboardfranciscochagas.lovable.app/",
     repo: REPO_LINK,
     caseStudy: {
       overview: "Dashboard interno para acompanhar fornecedores, entregas e notas fiscais com visão centralizada e filtros úteis.",
