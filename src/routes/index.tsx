@@ -92,7 +92,7 @@ const PROJECTS = [
     stack: ["HTML", "CSS", "JavaScript", "Design System"],
     desc: "Este próprio portfólio como projeto: estrutura, design system, responsividade e processo.",
     img: projPortfolio,
-    live: "https://neon-flow-portfolio-93.lovable.app/",
+    live: "https://portfoliochagas.lovable.app/",
     repo: REPO_LINK,
     caseStudy: {
       overview: "Meu portfólio pessoal pensado como produto: design system, identidade visual, responsividade e narrativa de processo.",
