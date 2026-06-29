@@ -73,7 +73,7 @@ const PROJECTS = [
     desc: "Site pessoal para atleta amador, com foco em storytelling, UX, responsividade e identidade visual.",
     img: projRunner,
     featured: true,
-    live: PROJECT_LINK,
+    live: "https://runnerfrancisco.lovable.app/",
     repo: REPO_LINK,
     caseStudy: {
       overview: "A Landing Page Francisco Runner é um projeto pessoal criado para apresentar minha trajetória como atleta amador autodidata no mundo da corrida de rua. O objetivo foi construir uma página visual, moderna e responsiva, usando storytelling, identidade visual forte e uma experiência de navegação simples e direta.",
