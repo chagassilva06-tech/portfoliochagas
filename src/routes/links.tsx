@@ -137,8 +137,12 @@ function LinksPage() {
                 alt="Foto de perfil de Francisco Chagas"
                 width={144}
                 height={144}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-full rounded-full object-cover border-4 border-background"
               />
+
             </div>
             <span
               aria-label="Disponível"
