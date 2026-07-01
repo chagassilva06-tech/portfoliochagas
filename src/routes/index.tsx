@@ -290,7 +290,7 @@ function Index() {
               <div className="group/title relative shrink-0">
                 <div className="absolute inset-0 rounded-2xl bg-primary/10 blur-lg opacity-40" />
                 <div className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center overflow-hidden rounded-2xl border-2 border-primary/60 bg-card/70 shadow-[0_0_15px_-10px_var(--neon)]">
-                  <img src={fcLogoAsset.url} alt="Logotipo FC - Francisco Chagas" className="h-full w-full object-cover" />
+                  <img src={fcLogoAsset.url} alt="Logotipo FC - Francisco Chagas" width={80} height={80} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
