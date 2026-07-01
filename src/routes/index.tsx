@@ -660,9 +660,13 @@ function TechCarousel({ reverse = false }: { reverse?: boolean }) {
                 <img
                   src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`}
                   alt={t.name}
+                  width={28}
+                  height={28}
                   className="h-7 w-7 opacity-90"
                   loading="lazy"
+                  decoding="async"
                 />
+
                 <span className="text-sm font-semibold whitespace-nowrap">{t.name}</span>
               </>
             ) : (
