@@ -337,8 +337,12 @@ function Index() {
                   alt="Francisco Chagas"
                   width={1024}
                   height={1448}
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
                   className="h-full w-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
                 />
+
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/20" />
               </div>
 
