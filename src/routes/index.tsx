@@ -418,7 +418,7 @@ function Index() {
             {PROJECTS.map((p) => (
               <article key={p.n} className="card-glow group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl bg-background flex items-center justify-center p-4">
-                  <img src={p.img} alt={p.title} className="max-h-full max-w-full object-contain object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  <img src={p.img} alt={p.title} width={800} height={600} className="max-h-full max-w-full object-contain object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
 
 
 
