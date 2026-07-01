@@ -48,10 +48,15 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Desenvolvedor Web em transição para UX/UI — interfaces modernas, responsivas e centradas na experiência do usuário." },
       { property: "og:title", content: "Francisco Chagas | Web & UX Portfolio" },
       { property: "og:description", content: "Portfólio com projetos de UX/UI, desenvolvimento web e design de interfaces." },
+      { property: "og:image", content: heroPhoto },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroPhoto, fetchpriority: "high" } as any,
     ],
   }),
   component: Index,
 });
+
 
 const NAV = [
   { label: "Início", href: "#inicio" },
