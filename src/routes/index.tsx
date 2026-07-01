@@ -48,10 +48,15 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Desenvolvedor Web em transição para UX/UI — interfaces modernas, responsivas e centradas na experiência do usuário." },
       { property: "og:title", content: "Francisco Chagas | Web & UX Portfolio" },
       { property: "og:description", content: "Portfólio com projetos de UX/UI, desenvolvimento web e design de interfaces." },
+      { property: "og:image", content: heroPhoto },
+    ],
+    links: [
+      { rel: "preload", as: "image", href: heroPhoto, fetchpriority: "high" } as any,
     ],
   }),
   component: Index,
 });
+
 
 const NAV = [
   { label: "Início", href: "#inicio" },
@@ -285,7 +290,7 @@ function Index() {
               <div className="group/title relative shrink-0">
                 <div className="absolute inset-0 rounded-2xl bg-primary/10 blur-lg opacity-40" />
                 <div className="relative grid h-16 w-16 sm:h-20 sm:w-20 place-items-center overflow-hidden rounded-2xl border-2 border-primary/60 bg-card/70 shadow-[0_0_15px_-10px_var(--neon)]">
-                  <img src={fcLogoAsset.url} alt="Logotipo FC - Francisco Chagas" className="h-full w-full object-cover" />
+                  <img src={fcLogoAsset.url} alt="Logotipo FC - Francisco Chagas" width={80} height={80} loading="lazy" decoding="async" className="h-full w-full object-cover" />
                 </div>
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05]">
@@ -332,8 +337,12 @@ function Index() {
                   alt="Francisco Chagas"
                   width={1024}
                   height={1448}
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
                   className="h-full w-full object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
                 />
+
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/20" />
               </div>
 
@@ -409,7 +418,7 @@ function Index() {
             {PROJECTS.map((p) => (
               <article key={p.n} className="card-glow group rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.04] hover:shadow-[0_30px_70px_-20px_var(--neon-soft)]">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-t-3xl bg-background flex items-center justify-center p-4">
-                  <img src={p.img} alt={p.title} className="max-h-full max-w-full object-contain object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  <img src={p.img} alt={p.title} width={800} height={600} className="max-h-full max-w-full object-contain object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async" />
 
 
 
@@ -651,9 +660,13 @@ function TechCarousel({ reverse = false }: { reverse?: boolean }) {
                 <img
                   src={`https://cdn.simpleicons.org/${t.slug}/${t.color}`}
                   alt={t.name}
+                  width={28}
+                  height={28}
                   className="h-7 w-7 opacity-90"
                   loading="lazy"
+                  decoding="async"
                 />
+
                 <span className="text-sm font-semibold whitespace-nowrap">{t.name}</span>
               </>
             ) : (
