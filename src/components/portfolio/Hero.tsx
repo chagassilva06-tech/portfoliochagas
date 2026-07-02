@@ -62,6 +62,14 @@ export function Hero() {
             <a href="https://github.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
               <Github className="h-4 w-4" /> Repositório GitHub
             </a>
+            <button
+              type="button"
+              onClick={() => setQrOpen(true)}
+              aria-label="Compartilhar portfólio via QR Code"
+              className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+            >
+              <QrCode className="h-4 w-4" /> QR Code
+            </button>
           </div>
 
           <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
