@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
     stack: ["HTML", "CSS", "JavaScript", "UX/UI"],
     desc: "Projeto estilo Linktree personalizado, com foco em identidade, usabilidade e conversão.",
     img: projLinksAsset.url,
-    live: "https://francisco-app.base44.app/",
+    live: "https://conexoesfranciscochagas.lovable.app/",
     repo: REPO_LINK,
     caseStudy: {
       overview: "Página de links personalizada para centralizar contatos, redes sociais e projetos em um único lugar com identidade visual coerente.",
