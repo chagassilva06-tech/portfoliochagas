@@ -14,7 +14,18 @@ const STATS = [
   { k: "UX/UI", v: "Em transição" },
 ];
 
+const PORTFOLIO_URL = "https://portfoliochagas.lovable.app/";
+const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=8&data=${encodeURIComponent(PORTFOLIO_URL)}`;
+
 export function Hero() {
+  const [qrOpen, setQrOpen] = useState(false);
+  useBodyScrollLock(qrOpen);
+  useEscapeKey(qrOpen, () => setQrOpen(false));
+
+  const copyLink = () => {
+    navigator.clipboard?.writeText(PORTFOLIO_URL);
+  };
+
   return (
     <section id="inicio" className="relative pt-28 pb-4 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
