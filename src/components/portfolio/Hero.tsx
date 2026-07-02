@@ -1,4 +1,7 @@
-import { ArrowRight, ChevronDown, Code2, Download, Figma, Github, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, ChevronDown, Code2, Download, Figma, Github, QrCode, Sparkles, X } from "lucide-react";
+import { useBodyScrollLock } from "../../hooks/useBodyScrollLock";
+import { useEscapeKey } from "../../hooks/useEscapeKey";
 import heroAsset from "../../assets/hero-arms.png.asset.json";
 import fcLogoAsset from "../../assets/fc-logo.png.asset.json";
 import { CV_URL } from "../../data/nav";
