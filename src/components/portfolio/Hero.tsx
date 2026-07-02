@@ -1,4 +1,7 @@
-import { ArrowRight, ChevronDown, Code2, Download, Figma, Github, Sparkles } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, ChevronDown, Code2, Download, Figma, Github, QrCode, Sparkles, X } from "lucide-react";
+import { useBodyScrollLock } from "../../hooks/useBodyScrollLock";
+import { useEscapeKey } from "../../hooks/useEscapeKey";
 import heroAsset from "../../assets/hero-arms.png.asset.json";
 import fcLogoAsset from "../../assets/fc-logo.png.asset.json";
 import { CV_URL } from "../../data/nav";
@@ -11,7 +14,18 @@ const STATS = [
   { k: "UX/UI", v: "Em transição" },
 ];
 
+const PORTFOLIO_URL = "https://portfoliochagas.lovable.app/";
+const QR_SRC = `https://api.qrserver.com/v1/create-qr-code/?size=320x320&margin=8&data=${encodeURIComponent(PORTFOLIO_URL)}`;
+
 export function Hero() {
+  const [qrOpen, setQrOpen] = useState(false);
+  useBodyScrollLock(qrOpen);
+  useEscapeKey(qrOpen, () => setQrOpen(false));
+
+  const copyLink = () => {
+    navigator.clipboard?.writeText(PORTFOLIO_URL);
+  };
+
   return (
     <section id="inicio" className="relative pt-28 pb-4 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-40 pointer-events-none" />
@@ -48,6 +62,14 @@ export function Hero() {
             <a href="https://github.com/" target="_blank" rel="noreferrer" className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
               <Github className="h-4 w-4" /> Repositório GitHub
             </a>
+            <button
+              type="button"
+              onClick={() => setQrOpen(true)}
+              aria-label="Compartilhar portfólio via QR Code"
+              className="btn-ghost-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+            >
+              <QrCode className="h-4 w-4" /> QR Code
+            </button>
           </div>
 
           <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
@@ -101,6 +123,59 @@ export function Hero() {
           Veja mais <ChevronDown className="h-4 w-4 animate-bounce" />
         </a>
       </div>
+
+      {qrOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="QR Code do portfólio"
+          className="fixed inset-0 z-[100] grid place-items-center p-4 bg-background/70 backdrop-blur-md animate-fade-in"
+          onClick={() => setQrOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-sm rounded-3xl border border-primary/30 bg-card/95 p-6 shadow-[0_30px_80px_-20px_var(--neon-soft)]"
+          >
+            <button
+              type="button"
+              onClick={() => setQrOpen(false)}
+              aria-label="Fechar"
+              className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-white/10 text-muted-foreground transition hover:text-neon hover:border-primary/60"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <div className="text-center">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs text-neon">
+                <QrCode className="h-3.5 w-3.5" /> Compartilhar portfólio
+              </div>
+              <h3 className="mt-3 text-lg font-bold">Aponte a câmera</h3>
+              <p className="mt-1 text-xs text-muted-foreground">Escaneie o QR Code para abrir meu portfólio.</p>
+            </div>
+            <div className="mt-5 grid place-items-center">
+              <div className="rounded-2xl bg-white p-3 shadow-inner">
+                <img src={QR_SRC} alt={`QR Code para ${PORTFOLIO_URL}`} width={256} height={256} loading="lazy" decoding="async" className="h-64 w-64" />
+              </div>
+            </div>
+            <div className="mt-5 flex flex-col gap-2">
+              <a
+                href={PORTFOLIO_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="truncate rounded-full border border-white/10 bg-secondary/40 px-4 py-2 text-center text-xs text-muted-foreground hover:text-neon hover:border-primary/60 transition"
+              >
+                {PORTFOLIO_URL}
+              </a>
+              <button
+                type="button"
+                onClick={copyLink}
+                className="btn-ghost-neon rounded-full px-4 py-2 text-xs font-semibold"
+              >
+                Copiar link
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
