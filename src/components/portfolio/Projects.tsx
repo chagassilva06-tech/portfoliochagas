@@ -34,9 +34,10 @@ export function Projects() {
         <div className="mt-10 flex justify-center">
           <button
             onClick={() => setShowAll(true)}
-            className="btn-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+            className="group inline-flex items-center gap-2 rounded-full border-2 border-primary/60 bg-transparent px-6 py-3 text-sm font-semibold text-neon shadow-[0_0_16px_var(--neon-soft)] transition-all duration-500 ease-out hover:-translate-y-1 hover:scale-105 hover:bg-primary/10 hover:shadow-[0_0_28px_var(--neon-soft),0_0_60px_var(--neon-soft)] animate-fade-in"
           >
-            <LayoutGrid className="h-4 w-4" /> Veja todos os projetos
+            <LayoutGrid className="h-4 w-4 transition-transform duration-500 group-hover:rotate-12" />
+            Veja todos os projetos
           </button>
         </div>
       </div>
