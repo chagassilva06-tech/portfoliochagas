@@ -3,6 +3,7 @@ import { PROJECTS } from "../../data/projects";
 import { SectionTag } from "./SectionTag";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
+import { FeaturedCarousel } from "./FeaturedCarousel";
 
 export function Projects() {
   const [selected, setSelected] = useState<string | null>(null);
@@ -24,7 +25,11 @@ export function Projects() {
           </p>
         </div>
 
-        <div className="mt-12 grid md:grid-cols-2 gap-10 md:gap-12">
+        <div className="mt-10">
+          <FeaturedCarousel projects={PROJECTS} onOpen={setSelected} />
+        </div>
+
+        <div className="mt-14 grid md:grid-cols-2 gap-10 md:gap-12">
           {PROJECTS.map((p) => (
             <ProjectCard key={p.n} project={p} onOpen={setSelected} />
           ))}
@@ -35,3 +40,4 @@ export function Projects() {
     </section>
   );
 }
+
