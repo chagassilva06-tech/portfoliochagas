@@ -35,7 +35,7 @@ export function Hero() {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
         <div className="fade-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-xs font-medium text-neon">
-            <Sparkles className="h-3.5 w-3.5" /> Disponível para novos projetos
+            Disponível para novos projetos
           </span>
           <div className="mt-5 flex items-center gap-5">
             <div className="group/title relative shrink-0">
