@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, ChevronDown, Code2, Download, Figma, Github, QrCode, Sparkles, X } from "lucide-react";
+import { ArrowRight, ChevronDown, Code2, Download, Figma, Github, QrCode, X } from "lucide-react";
 import { useBodyScrollLock } from "../../hooks/useBodyScrollLock";
 import { useEscapeKey } from "../../hooks/useEscapeKey";
 import heroAsset from "../../assets/hero-arms.png.asset.json";
