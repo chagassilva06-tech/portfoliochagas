@@ -256,6 +256,21 @@
     animation: modal-scale-in 0.3s ease-out both;
     animation-delay: 0.05s;
   }
+
+  /* Neon pulse (breathing glow) */
+  @keyframes neon-pulse {
+    0%, 100% {
+      box-shadow: 0 0 8px var(--neon-soft), 0 0 0 0 oklch(0.86 0.25 145 / 0);
+      border-color: oklch(0.86 0.25 145 / 0.45);
+    }
+    50% {
+      box-shadow: 0 0 22px oklch(0.86 0.25 145 / 0.55), 0 0 48px oklch(0.86 0.25 145 / 0.35);
+      border-color: oklch(0.86 0.25 145 / 1);
+    }
+  }
+  .animate-neon-pulse {
+    animation: neon-pulse 2.4s ease-in-out infinite;
+  }
 }
 
 a[href*="lovable.dev"], 
