@@ -1,12 +1,14 @@
 import { useMemo, useState } from "react";
+import { LayoutGrid } from "lucide-react";
 import { PROJECTS } from "../../data/projects";
 import { SectionTag } from "./SectionTag";
-import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
 import { FeaturedCarousel } from "./FeaturedCarousel";
+import { AllProjectsModal } from "./AllProjectsModal";
 
 export function Projects() {
   const [selected, setSelected] = useState<string | null>(null);
+  const [showAll, setShowAll] = useState(false);
   const activeProject = useMemo(
     () => PROJECTS.find((p) => p.n === selected) ?? null,
     [selected],
@@ -29,15 +31,23 @@ export function Projects() {
           <FeaturedCarousel projects={PROJECTS} onOpen={setSelected} />
         </div>
 
-        <div className="mt-14 grid md:grid-cols-2 gap-10 md:gap-12">
-          {PROJECTS.map((p) => (
-            <ProjectCard key={p.n} project={p} onOpen={setSelected} />
-          ))}
+        <div className="mt-10 flex justify-center">
+          <button
+            onClick={() => setShowAll(true)}
+            className="btn-neon inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+          >
+            <LayoutGrid className="h-4 w-4" /> Veja todos os projetos
+          </button>
         </div>
       </div>
 
+      <AllProjectsModal
+        open={showAll}
+        projects={PROJECTS}
+        onClose={() => setShowAll(false)}
+        onOpenProject={(n) => setSelected(n)}
+      />
       <ProjectModal project={activeProject} onClose={() => setSelected(null)} />
     </section>
   );
 }
-
