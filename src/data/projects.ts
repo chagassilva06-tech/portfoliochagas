@@ -126,4 +126,23 @@ export const PROJECTS: Project[] = [
       result: "Uma página leve, com carregamento rápido, identidade própria e foco em conversão para os principais canais.",
     },
   },
+  {
+    n: "06",
+    title: "Currículo Online",
+    category: "Currículo • Web",
+    stack: ["HTML", "CSS", "JavaScript", "UX/UI"],
+    desc: "Versão web do meu currículo profissional, com foco em leitura clara, hierarquia e identidade visual.",
+    img: projCurriculoImg,
+    live: "https://curriculochagas.lovable.app/",
+    repo: REPO_LINK,
+    caseStudy: {
+      overview: "Currículo em formato web pensado como uma extensão do portfólio, apresentando trajetória, formação e habilidades de forma clara e navegável.",
+      problem: "O currículo tradicional em PDF é estático e não transmite identidade visual nem experiência de navegação.",
+      objective: "Criar uma versão online do currículo com identidade coerente ao portfólio, responsiva e fácil de compartilhar.",
+      solution: "Layout limpo com seções bem definidas para experiência, formação e habilidades, tipografia legível e tema escuro com acentos neon.",
+      process: "Curadoria das informações mais relevantes, estruturação das seções, escolha tipográfica e implementação responsiva.",
+      tools: "HTML, CSS, JavaScript e conceitos de UX/UI.",
+      result: "Um currículo digital moderno, rápido e alinhado à identidade do portfólio, fácil de acessar e compartilhar por link.",
+    },
+  },
 ];
