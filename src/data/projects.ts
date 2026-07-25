@@ -3,7 +3,7 @@ import projLinksAsset from "../assets/links-cover.png.asset.json";
 import projDashboardAsset from "../assets/dashboard-cover.png.asset.json";
 import projPortfolioAsset from "../assets/portfolio-cover.png.asset.json";
 import projPMAsset from "../assets/product-manager-cover.png.asset.json";
-import projCurriculoAsset from "../assets/curriculo-cover.png.asset.json";
+import projCurriculoImg from "../assets/curriculo-cover.png";
 import { REPO_LINK } from "./nav";
 
 export type CaseStudy = {
