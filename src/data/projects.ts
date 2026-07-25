@@ -3,7 +3,7 @@ import projLinksAsset from "../assets/links-cover.png.asset.json";
 import projDashboardAsset from "../assets/dashboard-cover.png.asset.json";
 import projPortfolioAsset from "../assets/portfolio-cover.png.asset.json";
 import projPMAsset from "../assets/product-manager-cover.png.asset.json";
-import projCurriculoImg from "../assets/curriculo-cover.png";
+import projCurriculoAsset from "../assets/curriculo-cover.png.asset.json";
 import { REPO_LINK } from "./nav";
 
 export type CaseStudy = {
@@ -132,7 +132,7 @@ export const PROJECTS: Project[] = [
     category: "Currículo • Web",
     stack: ["HTML", "CSS", "JavaScript", "UX/UI"],
     desc: "Versão web do meu currículo profissional, com foco em leitura clara, hierarquia e identidade visual.",
-    img: projCurriculoImg,
+    img: projCurriculoAsset.url,
     live: "https://curriculochagas.lovable.app/",
     repo: REPO_LINK,
     caseStudy: {
