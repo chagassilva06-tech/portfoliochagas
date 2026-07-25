@@ -21,6 +21,10 @@ export function Projects() {
           <div>
             <SectionTag>Projetos</SectionTag>
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold">Meus trabalhos</h2>
+            <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/5 px-3 py-1 text-xs font-semibold text-neon">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+              {PROJECTS.length} projetos publicados
+            </div>
           </div>
           <p className="text-muted-foreground max-w-md">
             Alguns projetos que mostram minha trajetória: do código à experiência do usuário.
