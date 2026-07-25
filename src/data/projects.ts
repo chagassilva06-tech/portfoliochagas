@@ -132,7 +132,7 @@ export const PROJECTS: Project[] = [
     category: "Currículo • Web",
     stack: ["HTML", "CSS", "JavaScript", "UX/UI"],
     desc: "Versão web do meu currículo profissional, com foco em leitura clara, hierarquia e identidade visual.",
-    img: projCurriculoImg,
+    img: projCurriculoAsset.url,
     live: "https://curriculochagas.lovable.app/",
     repo: REPO_LINK,
     caseStudy: {
