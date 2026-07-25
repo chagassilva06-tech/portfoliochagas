@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { SectionTag } from "./SectionTag";
 import { TechCarousel } from "./TechCarousel";
 
