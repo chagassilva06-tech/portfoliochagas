@@ -17,8 +17,8 @@ export function Contact() {
               Aberto para oportunidades de UX/UI, desenvolvimento front-end e projetos freelance.
             </p>
             <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
-              <a href="tel:+5511977240726" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-neon transition">
-                <Phone className="h-4 w-4" /> 11 977240726
+              <a href="https://wa.me/5511977240726" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-neon transition">
+                <MessageCircle className="h-4 w-4" /> 11 977240726
               </a>
               <a href="mailto:chagassilva06@hotmail.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-neon transition">
                 <Mail className="h-4 w-4" /> chagassilva06@hotmail.com
